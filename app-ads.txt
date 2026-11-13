@@ -1,0 +1,2 @@
+# app-ads.txt for 遊技収支ノート
+# AdMob の発行者 ID の登録後に記載します。
