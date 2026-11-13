@@ -8,3 +8,5 @@ h1{font-size:1.6rem}h2{font-size:1.2rem;margin-top:2rem;border-bottom:1px solid 
 .ph{aspect-ratio:9/16;background:var(--card);border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;color:var(--mut);text-align:center;font-size:.85rem;padding:8px;border-radius:8px}
 .todo{background:var(--card);border-left:4px solid var(--acc);padding:8px 12px;margin:12px 0}
 footer{color:var(--mut);font-size:.85rem}table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+
+.shots{display:flex;gap:12px;flex-wrap:wrap}.shots figure{margin:0;max-width:180px}.shots img{width:100%;height:auto;border:1px solid #ccc;border-radius:8px}.shots figcaption{font-size:.8em;color:#555}
