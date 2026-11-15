@@ -4,44 +4,192 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>制作実績 | PS Tool Factory</title>
-<meta name="description" content="PS Tool Factory がこれまでに公開した Android アプリと Web サイトの一覧です。">
+<meta name="description" content="PS Tool Factory の制作実績。Android アプリ、Web サイト・LP、AI キャラクター「ヒカリ」の素材と告知 CM、レポート・資料のデザインを、カテゴリ別に紹介します。">
 <link rel="canonical" href="https://luckys4900.github.io/works/">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="制作実績 | PS Tool Factory">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://luckys4900.github.io/works/">
 <link rel="stylesheet" href="/style.css">
+<script src="/main.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <header class="site-header">
-<a class="brand" href="/">PS Tool Factory<small>個人開発の記録アプリ</small></a>
+<div class="wrap">
+<a class="brand" href="/"><span class="mark" aria-hidden="true">PS</span><span>PS Tool Factory<small>アプリ・Web・コンテンツ制作</small></span></a>
 <nav aria-label="サイト内"><a href="/">トップ</a> <a href="/koyaku/">小役番長</a> <a href="/ledger/">遊技収支ノート</a> <a href="/guide/">読み物</a> <a href="/works/" aria-current="page">制作実績</a> <a href="/about.html">運営者情報</a></nav>
-</header>
-<main>
-<p class="crumb"><a href="/">トップ</a> › 制作実績</p>
-<h1>制作実績</h1>
-<p>これまでに公開したものの一覧です。公開先のリンクから、実際に確認できるものだけを載せています。</p>
-
-<div class="cards">
-<section class="card">
-<div class="app-head"><img src="/img/koyaku/icon.webp" alt="小役番長のアイコン" width="56" height="56"><div><h3>小役番長</h3><span class="tag">Android アプリ</span> <span class="tag ok">公開中</span></div></div>
-<p>スロットの実戦中に、小役の出現回数をワンタップで数えるカウンター。回数とゲーム数から確率を表示し、取り消し・自動保存・実践履歴に対応。通信なしで動作し、広告は表示しません。</p>
-<p>公開先: <a href="https://play.google.com/store/apps/details?id=jp.pstool.koyaku" rel="noopener">Google Play</a> ／ <a href="/koyaku/">紹介ページ</a> ／ <a href="https://luckys4900.github.io/koyaku-counter-site/support/" rel="noopener">サポート</a></p>
-</section>
-<section class="card">
-<div class="app-head"><img src="/img/entry.webp" alt="遊技収支ノートの入力画面" width="56" height="56" style="object-fit:cover;object-position:top"><div><h3>遊技収支ノート</h3><span class="tag">Android アプリ</span> <span class="tag">近日公開</span></div></div>
-<p>パチンコ・パチスロの収支を日ごとに記録し、月・年の合計やホール別・機種別の集計で振り返る記録帳。記録は端末内に保存。現在は Google Play の内部テスト中です。</p>
-<p>公開先: <a href="/ledger/">紹介ページ</a>（Google Play での公開後にリンクを追加します）</p>
-</section>
-<section class="card">
-<h3>PS Tool Factory（このサイト）</h3>
-<p><span class="tag">Web サイト</span> <span class="tag ok">公開中</span></p>
-<p>アプリの紹介、使い方、記録の付け方や確率の読み方の解説をまとめた静的サイト。GitHub Pages で公開しています。</p>
-<p>公開先: <a href="/">https://luckys4900.github.io/</a></p>
-</section>
 </div>
+</header>
+<main id="main" class="wide">
+<section class="hero" style="padding-bottom:28px">
+<div class="wrap" style="grid-template-columns:1fr">
+<div>
+<p class="crumb"><a href="/">トップ</a> › 制作実績</p>
+<span class="eyebrow">Works</span>
+<h1>制作実績</h1>
+<p class="lead">アプリ開発、Web 制作、AI キャラクターと映像、レポート・資料のデザイン。これまでに作ったものを、制作時期と担当した範囲とあわせて載せています。書いているのは事実だけで、顧客の案件は店舗や会社を特定できる情報を伏せています。</p>
+</div>
+</div>
+</section>
+
+<section class="sec" style="padding-top:12px">
+<div class="wrap">
+<div class="filters" data-filter-group="allworks" role="group" aria-label="カテゴリで絞り込む" hidden>
+<button type="button" data-filter="all" aria-pressed="true">すべて</button>
+<button type="button" data-filter="app" aria-pressed="false">アプリ開発</button>
+<button type="button" data-filter="web" aria-pressed="false">Web 制作</button>
+<button type="button" data-filter="ai" aria-pressed="false">AI キャラクター</button>
+<button type="button" data-filter="video" aria-pressed="false">動画制作</button>
+<button type="button" data-filter="design" aria-pressed="false">レポート・デザイン</button>
+</div>
+
+<div id="allworks">
+<div class="cat-head first" id="app"><span class="num">01</span><h2>アプリ開発</h2><p>企画・画面設計・開発・テスト・ストア掲載</p></div>
+<div class="works">
+<article class="work reveal" data-cat="app">
+<figure class="thumb"><img src="/img/koyaku/landscape.webp" alt="小役番長の横画面" width="720" height="405" loading="lazy"><figcaption class="ov">カウント・取り消し・確率表示・実践履歴。通信なしで動作します。</figcaption></figure>
+<div class="body"><div class="info"><span class="tag ok">Google Play で公開中</span><span class="when">2026年10月〜</span></div>
+<h3><a href="/koyaku/">小役番長（Android）</a></h3>
+<p><b>役割:</b> 企画・デザイン・開発・ストア運用</p>
+<p>スロットの小役をワンタップで数えるカウンター。回数とゲーム数から確率を表示し、取り消し・自動保存・実践履歴に対応。</p>
+<p class="more"><a href="https://play.google.com/store/apps/details?id=jp.pstool.koyaku" rel="noopener">Google Play</a> ／ <a href="/koyaku/">紹介ページ</a></p></div>
+</article>
+<article class="work reveal" data-cat="app">
+<figure class="thumb"><img src="/img/entry.webp" alt="遊技収支ノートの入力画面" width="360" height="759" loading="lazy" style="object-position:top"><figcaption class="ov">収支の入力、月・年の合計、ホール別・機種別の集計。</figcaption></figure>
+<div class="body"><div class="info"><span class="tag">テスト中</span><span class="when">2026年11月〜</span></div>
+<h3><a href="/ledger/">遊技収支ノート（Android）</a></h3>
+<p><b>役割:</b> 企画・デザイン・開発</p>
+<p>パチンコ・パチスロの収支を日ごとに記録し、集計で振り返る記録帳。記録は端末内に保存。Google Play の内部テスト中です。</p>
+<p class="more"><a href="/ledger/">紹介ページ</a></p></div>
+</article>
+<article class="work reveal" data-cat="app design">
+<figure class="thumb"><img src="/img/works/koyaku-feature.webp" alt="小役番長のストア掲載グラフィック" width="1024" height="500" loading="lazy"><figcaption class="ov">アプリのアイコンを中心にした、ストアの一覧で目に留まる構成。</figcaption></figure>
+<div class="body"><div class="info"><span class="tag">ストア掲載物</span><span class="when">2026年11月</span></div>
+<h3>ストア掲載グラフィック</h3>
+<p><b>役割:</b> デザイン</p>
+<p>Google Play のフィーチャーグラフィック（1024×500）と、掲載用の画面画像を制作。</p></div>
+</article>
+</div>
+
+<div class="cat-head" id="web"><span class="num">02</span><h2>Web 制作</h2><p>サイト・LP・制作の仕組み</p></div>
+<div class="works">
+<article class="work reveal" data-cat="web">
+<div class="thumb txt">PS Tool Factory<small>このサイト（GitHub Pages）</small></div>
+<div class="body"><div class="info"><span class="tag ok">公開中</span><span class="when">2026年11月</span></div>
+<h3><a href="/">PS Tool Factory（このサイト）</a></h3>
+<p><b>役割:</b> 企画・デザイン・制作・運用</p>
+<p>アプリの紹介、読み物、制作実績をまとめた静的サイト。外部のフレームワークを使わず、ライト／ダーク表示に対応。</p></div>
+</article>
+<article class="work reveal" data-cat="web">
+<div class="thumb txt">小役番長 サポート<small>プライバシーポリシー・サポート</small></div>
+<div class="body"><div class="info"><span class="tag ok">公開中</span><span class="when">2026年10月</span></div>
+<h3>小役番長のサポートサイト</h3>
+<p><b>役割:</b> 制作・運用</p>
+<p>アプリのプライバシーポリシーとサポート（よくある質問・連絡先）のページ。</p>
+<p class="more"><a href="https://luckys4900.github.io/koyaku-counter-site/support/" rel="noopener">サポートページ</a></p></div>
+</article>
+<article class="work reveal" data-cat="web">
+<figure class="thumb"><img src="/img/works/lp-demo.webp" alt="LP 制作システムで生成した架空のデモ LP" width="1200" height="633" loading="lazy"><figcaption class="ov">画像は架空の会社名・文言で生成したデモ LP です。</figcaption></figure>
+<div class="body"><div class="info"><span class="tag">社内ツール</span><span class="when">2026年10月〜</span></div>
+<h3>LP 制作システム</h3>
+<p><b>役割:</b> 設計・開発</p>
+<p>案件の情報（確定・未確定を区別）から LP を生成し、5 つの画面幅での表示テスト、表現チェック、公開前チェックまでを一続きで行う制作の仕組み。</p></div>
+</article>
+<article class="work reveal" data-cat="web">
+<div class="thumb txt">パチンコ店向け 週次告知 LP<small>店舗情報は伏せています</small></div>
+<div class="body"><div class="info"><span class="tag">店舗の確認待ち・未公開</span><span class="when">2026年10月</span></div>
+<h3>パチンコ店向けの週次告知 LP</h3>
+<p><b>役割:</b> 構成・デザイン・制作</p>
+<p>上の制作システムで作った、店舗の週ごとの告知 LP。スマホ・PC の表示テストと、広告表現のチェックを通しています。店舗の確認待ちで未公開のため、画面は載せていません。</p></div>
+</article>
+</div>
+
+<div class="cat-head" id="ai"><span class="num">03</span><h2>AI キャラクター</h2><p>キャラクター設定・画像と動画の制作パイプライン</p></div>
+<div class="works">
+<article class="work reveal" data-cat="ai">
+<figure class="thumb"><img src="/img/works/hikari-sheet.webp" alt="AI キャラクター、ヒカリのポーズ見本" width="1200" height="422" loading="lazy"><figcaption class="ov">ヒカリは AI で生成したキャラクターです。実在の人物ではありません。</figcaption></figure>
+<div class="body"><div class="info"><span class="tag ai">AI 生成</span><span class="when">2026年11月</span></div>
+<h3><a href="/works/hikari.html">ヒカリ（HIKARI）のキャラクター素材</a></h3>
+<p><b>役割:</b> 企画・制作</p>
+<p>正式な顔と衣装を決め、全身・腰上・胸上のポーズ素材を用意。素材ごとに顔の一致度を測り、使えるものだけを映像に使っています。</p>
+<p class="more"><a href="/works/hikari.html">詳しく見る</a></p></div>
+</article>
+<article class="work reveal" data-cat="ai">
+<figure class="thumb"><img src="/img/works/cm2-cutin.webp" alt="ヒカリのカットイン場面" width="1200" height="675" loading="lazy"><figcaption class="ov">静止画に動きを付け、声と口の動きを合わせています。</figcaption></figure>
+<div class="body"><div class="info"><span class="tag ai">AI 生成</span><span class="when">2026年11月</span></div>
+<h3><a href="/works/hikari.html#pipeline">画像・動画の制作パイプライン</a></h3>
+<p><b>役割:</b> 設計・制作</p>
+<p>静止画 → 動き（ローカルの画像から動画への生成）→ 切り抜き → 声と口の動き → 画面の合成 → 書き出し → 審査、の流れを手元の PC で組んでいます。</p>
+<p class="more"><a href="/works/hikari.html#pipeline">制作の流れを見る</a></p></div>
+</article>
+</div>
+
+<div class="cat-head" id="video"><span class="num">04</span><h2>動画制作</h2><p>構成・演出・ナレーション・効果音・書き出し</p></div>
+<div class="works">
+<article class="work reveal" data-cat="video ai">
+<figure class="thumb"><img src="/img/works/cm1-open.webp" alt="告知 CM 第1弾の冒頭。ヒカリがアプリを紹介する" width="1200" height="675" loading="lazy"><figcaption class="ov">キャンペーンガール役のヒカリが、アプリの機能を順に紹介します。</figcaption></figure>
+<div class="body"><div class="info"><span class="tag">動画</span><span class="tag ai">AI キャラクター</span><span class="when">2026年11月</span></div>
+<h3><a href="/works/hikari.html#cm1">小役番長 告知 CM 第1弾（横 25 秒）</a></h3>
+<p><b>役割:</b> 企画・構成・映像・音声・書き出し</p>
+<p>7 場面の声主導の構成。タップ・取り消し・履歴をアプリの画面で見せ、配信告知で締めます。</p></div>
+</article>
+<article class="work reveal" data-cat="video ai">
+<figure class="thumb"><img src="/img/works/cm2-logo.webp" alt="告知 CM 第2弾の場面。アプリ名とヒカリ" width="1200" height="675" loading="lazy"><figcaption class="ov">ネオンのトンネルの背景と、テンポの速い BGM で第1弾と別物に。</figcaption></figure>
+<div class="body"><div class="info"><span class="tag">動画</span><span class="tag ai">AI キャラクター</span><span class="when">2026年11月</span></div>
+<h3><a href="/works/hikari.html#cm2">小役番長 告知 CM 第2弾（横 30 秒）</a></h3>
+<p><b>役割:</b> 企画・構成・映像・音声・書き出し</p>
+<p>機能の紹介を、オリジナルの演出の段階に置き換えた構成。特定の機種の映像・キャラクター・音は使っていません。</p></div>
+</article>
+</div>
+
+<div class="cat-head" id="design"><span class="num">05</span><h2>レポート・資料デザイン</h2><p>月次レポート・提案スライド</p></div>
+<div class="works">
+<article class="work reveal" data-cat="design">
+<figure class="thumb"><img src="/img/works/report-trend.webp" alt="月次レポートのデザイン見本。架空の数値の折れ線グラフ" width="1200" height="675" loading="lazy"><figcaption class="ov">数値・グラフはすべて架空です。</figcaption></figure>
+<div class="body"><div class="info"><span class="tag">デザイン見本</span><span class="when">2026年11月</span></div>
+<h3><a href="/works/reports.html">月次 稼働レポート（デザイン見本）</a></h3>
+<p><b>役割:</b> 構成・デザイン</p>
+<p>パチンコ店向けの月次レポートを想定し、架空のデータで作った 4 枚の見本。毎月同じ型で比べられる構成です。</p>
+<p class="more"><a href="/works/reports.html">見本を見る</a></p></div>
+</article>
+<article class="work reveal" data-cat="design">
+<figure class="thumb"><img src="/img/works/report-flow.webp" alt="レポート制作の進め方のスライド見本" width="1200" height="675" loading="lazy"><figcaption class="ov">ヒアリングから納品・更新までの 4 段階。</figcaption></figure>
+<div class="body"><div class="info"><span class="tag">デザイン見本</span><span class="when">2026年11月</span></div>
+<h3><a href="/works/reports.html#flow">提案スライド（デザイン見本）</a></h3>
+<p><b>役割:</b> 構成・デザイン</p>
+<p>レポート制作の進め方を 1 枚で伝える提案スライドの見本。</p></div>
+</article>
+</div>
+</div>
+
+<p class="note" style="margin-top:40px">掲載している画像のうち、レポートと LP のデモは架空のデータで作ったものです。AI キャラクター「ヒカリ」は AI で生成したキャラクターで、実在の人物ではありません。パチンコ・パチスロに関する制作物は 18 歳以上の方を対象としており、遊技を勧めるものではありません。</p>
+</div>
+</section>
 </main>
 <footer class="site-footer">
-<p>このサイトで紹介するアプリは、18歳以上の方を対象としています。遊技はご自身の判断で、のめり込みに注意し、無理のない範囲でお楽しみください。生活に支障が出るときは、相談窓口へ（お住まいの地域の精神保健福祉センターなど）。</p>
-<nav aria-label="サイト情報"><a href="/about.html">運営者情報</a> <a href="/privacy.html">プライバシーポリシー</a> <a href="/terms.html">利用規約</a> <a href="/contact.html">お問い合わせ</a> <a href="/disclosure.html">広告・PR の開示</a> <a href="/related.html">関連サービス（PR）</a> <a href="/changelog.html">更新履歴</a></nav>
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<h4>PS Tool Factory</h4>
+<p>個人で Android アプリ、Web サイト、AI キャラクターの映像、レポート・資料のデザインを制作しています。</p>
+<p><a href="/works/">制作実績を見る</a> ／ <a href="/contact.html">お問い合わせ</a></p>
+</div>
+<div>
+<h4>サイト内</h4>
+<ul><li><a href="/">トップ</a></li><li><a href="/koyaku/">小役番長</a></li><li><a href="/ledger/">遊技収支ノート</a></li><li><a href="/guide/">読み物</a></li><li><a href="/works/">制作実績</a></li><li><a href="/about.html">運営者情報</a></li></ul>
+</div>
+<div>
+<h4>サイト情報</h4>
+<ul><li><a href="/about.html">運営者情報</a></li><li><a href="/privacy.html">プライバシーポリシー</a></li><li><a href="/terms.html">利用規約</a></li><li><a href="/contact.html">お問い合わせ</a></li><li><a href="/disclosure.html">広告・PR の開示</a></li><li><a href="/related.html">関連サービス（PR）</a></li><li><a href="/changelog.html">更新履歴</a></li></ul>
+</div>
+</div>
+<div class="foot-note">
+<p><span class="age">18+</span>このサイトで紹介するアプリは、18歳以上の方を対象としています。遊技はご自身の判断で、のめり込みに注意し、無理のない範囲でお楽しみください。生活に支障が出るときは、相談窓口へ（お住まいの地域の精神保健福祉センターなど）。</p>
 <p>運営: PS Tool Factory（luckys4900）／ 最終更新: 2026-11-15</p>
 <p>&copy; 2026 luckys4900</p>
+</div>
+</div>
 </footer>
 </body>
 </html>

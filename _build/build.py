@@ -5,6 +5,7 @@
     title: ページ名
     desc: 説明（meta description）
     out: 出力先（例 koyaku/index.html）
+    layout: wide（省略時は読み物用の狭い本文。wide は本文側で section/wrap を組む）
     ---
     （本文の HTML）
 _build/ は先頭が _ のため、GitHub Pages（Jekyll）では公開されない。
@@ -64,9 +65,17 @@ def render(meta, body):
     desc = meta.get("desc", "")
     url = url_of(out)
     cur = ' aria-current="page"'
-    nav = " ".join(f'<a href="{h}"{cur if h == url else ""}>{t}</a>' for h, t in NAV)
-    foot = " ".join(f'<a href="{h}">{t}</a>' for h, t in FOOT)
+    def is_cur(h):
+        return h == url or (h != "/" and h.endswith("/") and url.startswith(h)) or (h == "/guide/" and url.startswith("/guide/"))
+    nav = " ".join(f'<a href="{h}"{cur if is_cur(h) else ""}>{t}</a>' for h, t in NAV)
+    nav_li = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in NAV)
+    foot_li = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in FOOT)
     desc_tag = f'<meta name="description" content="{html.escape(desc)}">\n' if desc else ""
+    layout = meta.get("layout", "page")
+    if layout == "wide":
+        main_html = '<main id="main" class="wide">\n' + body + '</main>'
+    else:
+        main_html = '<main id="main" class="page"><div class="prose">\n' + body + '</div></main>'
     return f"""<!doctype html>
 <html lang="ja">
 <head>
@@ -74,25 +83,49 @@ def render(meta, body):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(full_title)}</title>
 {desc_tag}<link rel="canonical" href="{SITE}{url}">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="{html.escape(full_title)}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{SITE}{url}">
 <link rel="stylesheet" href="/style.css">
+<script src="/main.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <header class="site-header">
-<a class="brand" href="/">{BRAND}<small>個人開発の記録アプリ</small></a>
+<div class="wrap">
+<a class="brand" href="/"><span class="mark" aria-hidden="true">PS</span><span>{BRAND}<small>アプリ・Web・コンテンツ制作</small></span></a>
 <nav aria-label="サイト内">{nav}</nav>
+</div>
 </header>
-<main>
-{body}</main>
+{main_html}
 <footer class="site-footer">
-<p>このサイトで紹介するアプリは、18歳以上の方を対象としています。遊技はご自身の判断で、のめり込みに注意し、無理のない範囲でお楽しみください。生活に支障が出るときは、相談窓口へ（お住まいの地域の精神保健福祉センターなど）。</p>
-<nav aria-label="サイト情報">{foot}</nav>
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<h4>{BRAND}</h4>
+<p>個人で Android アプリ、Web サイト、AI キャラクターの映像、レポート・資料のデザインを制作しています。</p>
+<p><a href="/works/">制作実績を見る</a> ／ <a href="/contact.html">お問い合わせ</a></p>
+</div>
+<div>
+<h4>サイト内</h4>
+<ul>{nav_li}</ul>
+</div>
+<div>
+<h4>サイト情報</h4>
+<ul>{foot_li}</ul>
+</div>
+</div>
+<div class="foot-note">
+<p><span class="age">18+</span>このサイトで紹介するアプリは、18歳以上の方を対象としています。遊技はご自身の判断で、のめり込みに注意し、無理のない範囲でお楽しみください。生活に支障が出るときは、相談窓口へ（お住まいの地域の精神保健福祉センターなど）。</p>
 <p>運営: {BRAND}（luckys4900）／ 最終更新: {UPDATED}</p>
 <p>&copy; 2026 luckys4900</p>
+</div>
+</div>
 </footer>
 </body>
 </html>
 """
-
 
 def main():
     outs = []
