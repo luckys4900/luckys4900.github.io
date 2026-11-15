@@ -222,6 +222,22 @@ th{background:var(--soft)}
 .yt:hover .yt-play{transform:scale(1.08)}
 .yt-text{position:relative;font-weight:700;font-size:.95rem;line-height:1.5;text-shadow:0 1px 3px rgba(0,0,0,.5)}
 .yt-frame{display:block;width:100%;aspect-ratio:16/9;border:0}
+.yt.has-thumb{padding:0;background:#0d1018;overflow:hidden}
+.yt.has-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .3s ease}
+.yt.has-thumb:hover img,.yt.has-thumb:focus-visible img{transform:scale(1.05);filter:brightness(.55)}
+.yt.has-thumb .yt-play{opacity:.92}
+.yt.has-thumb .yt-text{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;background:linear-gradient(transparent,rgba(6,9,16,.88));opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
+.yt.has-thumb:hover .yt-text,.yt.has-thumb:focus-visible .yt-text{opacity:1;transform:none}
+.yt-text small{display:block;font-weight:500;font-size:.78rem;opacity:.85}
+@media(hover:none){.yt.has-thumb .yt-text{opacity:1;transform:none}}
+.yt-label{z-index:1}.yt-play{z-index:1}
+.yt-grid.shorts{grid-template-columns:repeat(auto-fill,minmax(min(46%,150px),1fr))}
+.yt.has-thumb .yt-label{left:auto;right:10px;top:auto;bottom:10px;background:rgba(6,9,16,.7)}
+.work .thumb.mosaic{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#0d1018}
+.work .thumb.mosaic img{height:100%;object-fit:cover}
+.yt-card.short .yt{aspect-ratio:9/16}
+.yt-card.short .yt-frame{aspect-ratio:9/16}
+
 
 /* フッタ */
 .site-footer{margin-top:56px;background:var(--bg2);border-top:1px solid var(--line);color:var(--mut);font-size:.86rem}
