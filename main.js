@@ -29,4 +29,18 @@
       });
     });
   });
+  d.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest("a.yt[data-yt]");
+    if (!a || ev.ctrlKey || ev.metaKey || ev.shiftKey) return;
+    ev.preventDefault();
+    var f = d.createElement("iframe");
+    f.className = "yt-frame";
+    f.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(a.getAttribute("data-yt")) + "?autoplay=1&rel=0";
+    f.title = a.getAttribute("data-title") || "YouTube の動画";
+    f.loading = "lazy";
+    f.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+    f.allowFullscreen = true;
+    f.referrerPolicy = "strict-origin-when-cross-origin";
+    a.replaceWith(f);
+  });
 })();
