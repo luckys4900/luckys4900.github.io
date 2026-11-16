@@ -11,7 +11,7 @@ async function auditHikari() {
     await new Promise(r => setTimeout(r, 60));
   }
   // 遅延読み込みの画像も含めて、全部の読み込みを待つ
-  await Promise.all([...document.images].filter(i => /\/img\/hikari\//.test(i.src)).map(i => {
+  await Promise.all([...document.images].filter(i => /\/img\/hikari\/|\/hk-[\w-]+\.|chibi/.test(i.src)).map(i => {
     i.loading = 'eager';
     return Promise.race([i.decode().catch(() => {}), new Promise(r => setTimeout(r, 4000))]);
   }));
@@ -41,7 +41,7 @@ async function auditHikari() {
   };
 
   const issues = [];
-  const imgs = [...document.querySelectorAll('img')].filter(i => /\/img\/hikari\//.test(i.currentSrc || i.src));
+  const imgs = [...document.querySelectorAll('img')].filter(i => /\/img\/hikari\/|\/hk-[\w-]+\.|chibi/.test(i.currentSrc || i.src));
   // 重なりを調べる相手: 文字や操作部品を持つ要素（画像自身の祖先・子孫は除く）
   const content = [...document.querySelectorAll('h1,h2,h3,h4,p,li,a,button,figure,.tile,.card,[class*=card],[class*=box],[class*=step],[class*=pt-]')]
     .filter(e => {
@@ -62,16 +62,19 @@ async function auditHikari() {
     // 1) 切れ: overflow が visible でない祖先との共通部分と、ページの横幅
     if (!isIcon) {
       let vis = { ...R };
+      // 横スクロールのカルーセルの中にある画像は、スクロールすれば見えるので、
+      // そのカルーセルより外側の要素や画面の端による横方向の切れも数えない
+      let inScroller = false;
       for (let a = img.parentElement; a && a !== document.documentElement; a = a.parentElement) {
         const s = getComputedStyle(a);
+        if (/(auto|scroll)/.test(s.overflowX) && a.scrollWidth > a.clientWidth + 1) inScroller = true;
         if (/(hidden|clip|auto|scroll)/.test(s.overflow + s.overflowX + s.overflowY)) {
           const A = abs(a);
-          // 横スクロールのカルーセルは、スクロールで見られるので横方向の切れは数えない
-          const scrollX = /(auto|scroll)/.test(s.overflowX);
-          vis = inter(vis, { l: scrollX ? vis.l : A.l, r: scrollX ? vis.r : A.r, t: A.t, b: A.b });
+          const skipX = inScroller;
+          vis = inter(vis, { l: skipX ? vis.l : A.l, r: skipX ? vis.r : A.r, t: A.t, b: A.b });
         }
       }
-      vis = inter(vis, { l: 0, r: document.documentElement.clientWidth, t: -1e9, b: 1e9 });
+      if (!inScroller) vis = inter(vis, { l: 0, r: document.documentElement.clientWidth, t: -1e9, b: 1e9 });
       const ratio = area(vis) / area(R);
       if (ratio < 0.99) issues.push({ type: 'CLIPPED', img: name(img), src: (img.currentSrc || '').split('/').pop(), visible: Math.round(ratio * 1000) / 10 + '%' });
     }
@@ -107,6 +110,15 @@ async function auditHikari() {
             l: frac([...Array(H).keys()].map(y => [0, y])),
             r: frac([...Array(H).keys()].map(y => [W - 1, y])),
           };
+          // 判定のしきい値: 人物の画素が端に 3% 以上掛かっていたら「切れ」とみなす。
+          // （幅の比で緩める方式は、足首で切れた素材を見逃したので廃止した。2026-11-16）
+          // 例外: ちびキャラ（chibi-*）は、靴まで全部写っていて端に掛かるのは足元の薄い影だけであることを、
+          // 親が全 5 体を拡大して確認済み。
+          const isChibi = /\/chibi-/.test(img.currentSrc || img.src);
+          for (const k of ['b', 'l', 'r']) {
+            if (isChibi) edges[k] = 0;
+            else if (edges[k] >= 0.03) edges[k] = Math.max(edges[k], 0.15); // 下の判定（0.15 以上）に乗せる
+          }
           // 見えている（切れた後の）画像の端と、カードの端の差
           const flush = { b: Math.abs(Math.min(R.b, clips ? K.b : R.b) - K.b), t: Math.abs(Math.max(R.t, clips ? K.t : R.t) - K.t), l: Math.abs(Math.max(R.l, clips ? K.l : R.l) - K.l), r: Math.abs(Math.min(R.r, clips ? K.r : R.r) - K.r) };
           for (const k of ['b', 'l', 'r']) { // 上端は帽子・髪で切れても目立ちにくいので下・左・右を見る
