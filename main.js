@@ -23,7 +23,7 @@
       if (!b) return;
       var f = b.getAttribute("data-filter");
       bar.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-      grid.querySelectorAll(".work,.wk").forEach(function (w) {
+      grid.querySelectorAll(".work,.wk,.wk-say,.wk-band").forEach(function (w) {
         w.hidden = !(f === "all" || (w.getAttribute("data-cat") || "").split(" ").indexOf(f) >= 0);
         if (!w.hidden) w.classList.add("in");
       });
