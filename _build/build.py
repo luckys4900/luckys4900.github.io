@@ -78,7 +78,8 @@ def render(meta, body):
     cur = ' aria-current="page"'
     def is_cur(h):
         return h == url or (h != "/" and h.endswith("/") and url.startswith(h)) or (h == "/guide/" and url.startswith("/guide/"))
-    nav = " ".join(f'<a href="{h}"{cur if is_cur(h) else ""}>{t}</a>' for h, t in NAV)
+    nav_inline = "".join(f'<a href="{h}"{cur if is_cur(h) else ""}>{t}</a>' for h, t in NAV if h != "/")
+    menu_li = "".join(f'<li><a href="{h}"{cur if is_cur(h) else ""}>{t}</a></li>' for h, t in NAV)
     nav_li = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in NAV)
     foot_li = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in FOOT)
     desc_tag = f'<meta name="description" content="{html.escape(desc)}">\n' if desc else ""
@@ -98,16 +99,24 @@ def render(meta, body):
 <meta property="og:title" content="{html.escape(full_title)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{SITE}{url}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700&amp;family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css?v={ASSET_V['style.css']}">
 <script src="/main.js?v={ASSET_V['main.js']}" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
 <header class="site-header">
-<div class="wrap pillbar">
-<a class="brand" href="/"><span class="mark" aria-hidden="true">PS</span><span>{BRAND}<small>アプリ・Web・コンテンツ制作</small></span></a>
-<nav aria-label="サイト内">{nav}</nav>
-<div class="hd-cta"><a class="btn-line sm" href="{YT_URL}" rel="noopener">YouTube を見る</a><a class="btn-y sm" href="/contact.html">制作の相談をする</a></div>
+<div class="hd-bar">
+<a class="logo" href="/"><small>APP / WEB / CONTENT WORKS</small><b>{BRAND}</b></a>
+<nav class="hd-nav" aria-label="サイト内">{nav_inline}</nav>
+<div class="hd-cta"><a class="btn-out sm" href="{YT_URL}" rel="noopener">YouTube を見る</a><a class="btn-y sm" href="/contact.html">制作の相談をする</a></div>
+<button type="button" class="hd-burger" id="hdBurger" aria-expanded="false" aria-controls="hdMenu" aria-label="メニューを開く"><i></i><i></i></button>
+</div>
+<div class="hd-menu" id="hdMenu" hidden>
+<ul>{menu_li}</ul>
+<p class="hd-menu-btns"><a class="btn-out" href="{YT_URL}" rel="noopener">YouTube を見る</a><a class="btn-y" href="/contact.html">制作の相談をする</a></p>
 </div>
 </header>
 {main_html}
@@ -143,7 +152,7 @@ def render(meta, body):
 <p class="hk-menu-ai">AI で生成したキャラクターです。実在の人物ではありません。</p>
 </div>
 <p class="hk-tip" id="hkTip" aria-live="polite" hidden></p>
-<button type="button" class="hk-fab-btn" id="hkBtn" aria-expanded="false" aria-controls="hkMenu" aria-label="ヒカリの案内を開く（目次）"><img src="/img/hikari/chibi-s01-192.webp" width="64" height="64" alt=""></button>
+<button type="button" class="hk-fab-btn" id="hkBtn" aria-expanded="false" aria-controls="hkMenu" aria-label="ヒカリの案内を開く（目次）"><img src="/img/hikari/chibi-s00.webp" width="196" height="320" alt=""></button>
 </div>
 </body>
 </html>

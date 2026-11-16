@@ -36,6 +36,16 @@
     var b = d.querySelector('[data-filter-group] button[data-filter="' + h + '"]');
     if (b) b.click();
   })();
+  // ヘッダーのハンバーガー
+  (function () {
+    var b = d.getElementById("hdBurger"), m = d.getElementById("hdMenu");
+    if (!b || !m) return;
+    function set(o) { m.hidden = !o; b.setAttribute("aria-expanded", o ? "true" : "false"); b.setAttribute("aria-label", o ? "メニューを閉じる" : "メニューを開く"); }
+    b.addEventListener("click", function (e) { e.stopPropagation(); set(m.hidden); });
+    m.addEventListener("click", function (e) { if (e.target.closest("a")) set(false); });
+    d.addEventListener("click", function (e) { if (!m.hidden && !m.contains(e.target)) set(false); });
+    d.addEventListener("keydown", function (e) { if (e.key === "Escape" && !m.hidden) { set(false); b.focus(); } });
+  })();
   // 横スクロールのカルーセル（左右ボタン）
   d.querySelectorAll(".car-wrap").forEach(function (wr) {
     var car = wr.querySelector(".carousel");
