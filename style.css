@@ -609,7 +609,7 @@ em{font-style:normal}
 .hk-menu li.sep{font-size:11px;color:#7a6c98;padding:8px 10px 2px;font-weight:700}
 .hk-menu-ai{margin:8px 2px 0;font-size:11px;color:#7a6c98;line-height:1.5}
 .hk-tip{margin:0;max-width:220px;background:#fff;color:var(--ink);border:1px solid var(--line2);border-radius:16px;padding:7px 12px;font-size:13px;font-weight:500;line-height:1.5;box-shadow:0 6px 18px rgba(94,76,170,.28)}
-@media(max-width:640px){.hk-fab{right:10px;bottom:10px}.hk-fab-btn{width:56px;height:56px}.hk-tip{max-width:170px;font-size:12px}}
+@media(max-width:640px){.hk-fab{right:10px;bottom:10px}.hk-fab-btn{width:56px;height:56px}.hk-tip{display:none!important}}
 
 @media(prefers-reduced-motion:reduce){
   .hk-fab-btn{animation:none!important}
