@@ -98,7 +98,8 @@ async function auditHikari() {
           const cv = document.createElement('canvas'); const W = 120, H = Math.max(1, Math.round(120 * img.naturalHeight / img.naturalWidth));
           cv.width = W; cv.height = H; const g = cv.getContext('2d'); g.drawImage(img, 0, 0, W, H);
           const d = g.getImageData(0, 0, W, H).data;
-          const subj = (x, y) => { const i = (y * W + x) * 4; return d[i + 3] > 40 && !(d[i] > 236 && d[i + 1] > 236 && d[i + 2] > 236); };
+          // 人物の画素: 不透明で、白い背景や薄い灰色の影（3 色とも 215 超）ではないもの
+          const subj = (x, y) => { const i = (y * W + x) * 4; return d[i + 3] > 40 && !(d[i] > 215 && d[i + 1] > 215 && d[i + 2] > 215); };
           const frac = (pts) => pts.filter(([x, y]) => subj(x, y)).length / pts.length;
           const edges = {
             b: frac([...Array(W).keys()].map(x => [x, H - 1])),
@@ -113,6 +114,10 @@ async function auditHikari() {
             const hiddenByClip = clips && ((k === 'b' && R.b > K.b + 1) || (k === 'l' && R.l < K.l - 1) || (k === 'r' && R.r > K.r + 1));
             if (edges[k] >= 0.15 && !hiddenByClip && flush[k] > 2) {
               issues.push({ type: 'CUT_EDGE', img: name(img), src: (img.currentSrc || '').split('/').pop(), edge: k, subjectOnEdge: Math.round(edges[k] * 100) + '%', gapToCardEdge: Math.round(flush[k]) + 'px' });
+            } else if (edges[k] >= 0.15) {
+              // ユーザー判断（2026-11-16）: 切り口を枠の端にそろえても「体が途中で切れた画像」に見えるので不可。
+              // 円形の顔アイコン以外では、人物が素材の下・左・右の端で切れている画像は使わない（全身がそろった素材を使う）。
+              issues.push({ type: 'CUT_SOURCE', img: name(img), src: (img.currentSrc || '').split('/').pop(), edge: k, subjectOnEdge: Math.round(edges[k] * 100) + '%' });
             }
           }
         } catch (e) { issues.push({ type: 'PIXEL_CHECK_FAILED', img: name(img), err: String(e) }); }

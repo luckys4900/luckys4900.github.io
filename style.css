@@ -642,3 +642,87 @@ em{font-style:normal}
   .wk-band .hk-ic{display:none}
   .wk-band .hk-say .hk-bub::before{display:none}
 }
+
+/* --- 2026-11-16 PS ブランド表示・全身素材・パステル背景（上書き） --- */
+:root{
+  --pc-lav:#E4DCFA;--pc-mint:#D3F2E4;--pc-lemon:#FFF1BC;--pc-peach:#FFDCCB;--pc-sky:#D2EAFB;--pc-pink:#FBDDEB;
+  --panel:linear-gradient(135deg,#ECE6FB 0%,#E2F5EC 100%)
+}
+body{background:
+  radial-gradient(60vmax 46vmax at 6% 4%,var(--pc-lav) 0%,transparent 62%),
+  radial-gradient(52vmax 40vmax at 96% 12%,var(--pc-sky) 0%,transparent 62%),
+  radial-gradient(56vmax 44vmax at 88% 58%,var(--pc-lemon) 0%,transparent 60%),
+  radial-gradient(54vmax 42vmax at 4% 66%,var(--pc-mint) 0%,transparent 60%),
+  radial-gradient(60vmax 42vmax at 56% 100%,var(--pc-peach) 0%,transparent 62%),
+  radial-gradient(40vmax 30vmax at 40% 40%,var(--pc-pink) 0%,transparent 60%),
+  #FBFAFF fixed;background-attachment:fixed}
+.works-sec{background:linear-gradient(180deg,rgba(210,234,251,0) 0%,rgba(210,234,251,.55) 22%,rgba(211,242,228,.5) 72%,rgba(255,241,188,0) 100%)}
+.empathy{background:radial-gradient(46vmax 28vmax at 12% 40%,rgba(255,241,188,.6),transparent 70%),radial-gradient(44vmax 28vmax at 90% 60%,rgba(251,221,235,.6),transparent 70%)}
+#features{background:radial-gradient(50vmax 34vmax at 8% 20%,rgba(211,242,228,.65),transparent 70%),radial-gradient(50vmax 34vmax at 94% 70%,rgba(228,220,250,.65),transparent 70%)}
+#flow{background:radial-gradient(50vmax 34vmax at 92% 20%,rgba(255,220,203,.6),transparent 70%),radial-gradient(46vmax 30vmax at 6% 80%,rgba(210,234,251,.6),transparent 70%)}
+#faq{background:radial-gradient(50vmax 32vmax at 10% 30%,rgba(255,241,188,.6),transparent 70%),radial-gradient(46vmax 30vmax at 92% 80%,rgba(211,242,228,.6),transparent 70%)}
+.point:nth-child(1){background:linear-gradient(135deg,#ECE6FB,#DDF3F9)}
+.point:nth-child(2){background:linear-gradient(135deg,#FFF0C8,#FFE3D6)}
+.point:nth-child(3){background:linear-gradient(135deg,#DDF4E8,#E6E0FA)}
+.orb{background:radial-gradient(circle at 32% 28%,#fff 0,#EDE7FC 24%,#CFC3F4 60%,#B7A8EC 100%);box-shadow:inset -14px -18px 34px rgba(150,130,220,.22),inset 10px 12px 26px rgba(255,255,255,.75);opacity:.8}
+.orb.o2{background:radial-gradient(circle at 32% 28%,#fff 0,#E3F8EE 26%,#BDEBD4 62%,#9FDDBF 100%)}
+.orb.o3{background:radial-gradient(circle at 32% 28%,#fff 0,#E1F1FD 26%,#B5DBF6 62%,#93C8EE 100%)}
+.orb.o4{background:radial-gradient(circle at 32% 28%,#fff 0,#FFF7D1 26%,#FFE88F 62%,#FBD96A 100%)}
+.orb.o5{background:radial-gradient(circle at 32% 28%,#fff 0,#FFE9DF 30%,#FFC9B3 100%)}
+.blob{background:radial-gradient(circle,rgba(255,255,255,.9),rgba(255,241,188,.5) 55%,transparent 72%)}
+.blob.b2{background:radial-gradient(circle,rgba(255,255,255,.9),rgba(211,242,228,.6) 55%,transparent 72%)}
+
+/* ヘッダー小見出し・ファーストビューの PS */
+.logo small{font-size:9px;letter-spacing:.16em}
+@media(max-width:900px){.logo small{font-size:8px;letter-spacing:.1em}}
+.hero2 h1{flex-wrap:wrap;row-gap:10px}
+.hero2 h1 .ps{display:inline-flex;align-items:flex-start;gap:14px;flex:none}
+.hero2 h1 .ps-l{display:flex;flex-direction:column;align-items:center;line-height:1}
+.hero2 h1 .ps-l b{font-family:var(--fh);font-weight:600;font-size:clamp(76px,8.2vw,100px);line-height:1;background:linear-gradient(160deg,#8E7CD8 20%,#4a3fa0 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero2 h1 .ps-l small{font-family:var(--fh);font-size:13px;font-weight:600;letter-spacing:.12em;color:#4a3fa0;margin-top:4px;text-transform:uppercase}
+.hero2 h1 .jp{white-space:normal;font-size:clamp(20px,2.4vw,30px);letter-spacing:.1em;line-height:1.5}
+.hero2 h1 .jp em{font-style:normal;color:#4a3fa0}
+@media(max-width:560px){.hero2 h1 .ps-l b{font-size:64px}.hero2 h1 .ps-l small{font-size:12px;letter-spacing:.08em}.hero2 h1 .jp{font-size:20px}}
+.mark-lg{flex-direction:column;align-content:center;gap:0}
+.mark-lg{display:flex;align-items:center;justify-content:center}
+.mark-lg .mk-ps{font-size:inherit;line-height:1}
+.mark-lg small{font-family:var(--fh);font-size:11px;letter-spacing:.06em;font-weight:600;margin-top:4px;white-space:nowrap}
+@media(max-width:640px){.mark-lg{width:120px;height:120px}}
+
+/* POINT: 全身素材の枠と、ボックス・線・画像のすき間 */
+.pt-fig{align-items:center;justify-content:flex-end;gap:28px}
+.pt-frame{margin:0;width:44%;max-width:230px;padding:10px;background:#fff}
+.pt-fig .pt-frame img{display:block;width:100%;height:auto}
+.labels li{margin-right:0}
+.labels li::after{display:none}
+@media(max-width:860px){
+  .pt-fig{gap:20px}
+  .pt-frame{max-width:170px}
+  .labels li{margin-right:0}
+}
+
+/* CTA 帯の全身画像 */
+@media(min-width:901px){
+  .cta2:has(.cta-hk){min-height:420px;display:flex;flex-direction:column;justify-content:center}
+  .cta-hk{right:34px;bottom:0;width:230px;padding:10px 10px 0}
+}
+.cta-hk{overflow:hidden}
+
+/* CHARACTER セクション */
+.chara-poses{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;max-width:1040px;margin:30px auto 0}
+.chara-poses figure{margin:0;background:#fff;border-radius:24px;padding:12px;box-shadow:var(--sh);line-height:0}
+.chara-poses img{display:block;width:100%;height:auto;border-radius:14px}
+.chara-cap{text-align:center;font-size:13px;margin:14px 0 0}
+.chara-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:1040px;margin:30px auto 0}
+.chara-card{background:rgba(255,255,255,.82);border-radius:28px;padding:28px 30px;box-shadow:var(--sh)}
+.chara-card h3{margin:0 0 12px;font-size:18px;letter-spacing:.1em}
+.chara-lab{margin:12px 0 8px;font-size:13px;font-weight:700;color:#4a3fa0}
+.chara-faces,.chara-chibi{list-style:none;margin:0;padding:0;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end}
+.chara-faces .hk-ic{width:84px;height:84px}
+.chara-chibi img{display:block;height:150px;width:auto}
+.chara-cm{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:1040px;margin:30px auto 0}
+.chara-cm figure{margin:0;background:#fff;border-radius:20px;padding:8px;box-shadow:var(--sh);line-height:0}
+.chara-cm img{display:block;width:100%;height:auto;border-radius:12px}
+.chara-sec{background:radial-gradient(50vmax 32vmax at 10% 30%,rgba(255,220,203,.55),transparent 70%),radial-gradient(46vmax 30vmax at 92% 70%,rgba(228,220,250,.6),transparent 70%)}
+@media(max-width:860px){.chara-poses{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.chara-body{grid-template-columns:1fr}.chara-card{padding:22px 20px}.chara-cm{grid-template-columns:1fr}}
+.chara-body{align-items:start}

@@ -72,7 +72,7 @@ def url_of(out):
 def render(meta, body):
     out = meta["out"]
     title = meta["title"]
-    full_title = BRAND if out == "index.html" else f"{title} | {BRAND}"
+    full_title = f"{BRAND} | パチンコ・パチスロの制作工房" if out == "index.html" else f"{title} | {BRAND}（パチンコ・パチスロ）"
     desc = meta.get("desc", "")
     url = url_of(out)
     cur = ' aria-current="page"'
@@ -109,7 +109,7 @@ def render(meta, body):
 <a class="skip" href="#main">本文へ移動</a>
 <header class="site-header">
 <div class="hd-bar">
-<a class="logo" href="/"><small>APP / WEB / CONTENT WORKS</small><b>{BRAND}</b></a>
+<a class="logo" href="/"><small>PACHINKO / SLOT CREATIVE</small><b>{BRAND}</b></a>
 <nav class="hd-nav" aria-label="サイト内">{nav_inline}</nav>
 <div class="hd-cta"><a class="btn-out sm" href="{YT_URL}" rel="noopener">YouTube を見る</a><a class="btn-y sm" href="/contact.html">制作の相談をする</a></div>
 <button type="button" class="hd-burger" id="hdBurger" aria-expanded="false" aria-controls="hdMenu" aria-label="メニューを開く"><i></i><i></i></button>
@@ -125,7 +125,7 @@ def render(meta, body):
 <div class="foot-grid">
 <div>
 <h4>{BRAND}</h4>
-<p>個人で Android アプリ、Web サイト、AI キャラクターの映像、レポート・資料のデザインを制作しています。</p>
+<p>パチンコ・パチスロ専門の制作工房です。分析・提案から、アプリ・Web・映像・レポートのデザイン、キャラクター・キャンペーンガールの制作、導線の構築まで、納品・公開後の運用まで一貫して担当します。</p>
 <p><a href="/works/">制作実績を見る</a> ／ <a href="/contact.html">お問い合わせ</a></p>
 </div>
 <div>
