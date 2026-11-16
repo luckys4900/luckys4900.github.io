@@ -20,6 +20,7 @@ PAGES = os.path.join(ROOT, "_build", "pages")
 SITE = "https://luckys4900.github.io"
 UPDATED = "2026-11-15"
 BRAND = "PS Tool Factory"
+YT_URL = "https://www.youtube.com/@pachinko_iinkai"
 
 NAV = [
     ("/", "トップ"),
@@ -93,9 +94,10 @@ def render(meta, body):
 <body>
 <a class="skip" href="#main">本文へ移動</a>
 <header class="site-header">
-<div class="wrap">
+<div class="wrap pillbar">
 <a class="brand" href="/"><span class="mark" aria-hidden="true">PS</span><span>{BRAND}<small>アプリ・Web・コンテンツ制作</small></span></a>
 <nav aria-label="サイト内">{nav}</nav>
+<div class="hd-cta"><a class="btn-line sm" href="{YT_URL}" rel="noopener">YouTube を見る</a><a class="btn-y sm" href="/contact.html">制作の相談をする</a></div>
 </div>
 </header>
 {main_html}
@@ -118,11 +120,21 @@ def render(meta, body):
 </div>
 <div class="foot-note">
 <p><span class="age">18+</span>このサイトで紹介するアプリは、18歳以上の方を対象としています。遊技はご自身の判断で、のめり込みに注意し、無理のない範囲でお楽しみください。生活に支障が出るときは、相談窓口へ（お住まいの地域の精神保健福祉センターなど）。</p>
+<p class="ai-note">ヒカリ（サイトの案内役）は AI で生成したキャラクターです。実在の人物ではありません。</p>
 <p>運営: {BRAND}（luckys4900）／ 最終更新: {UPDATED}</p>
 <p>&copy; 2026 luckys4900</p>
 </div>
 </div>
 </footer>
+<div class="hk-fab" id="hkFab">
+<div class="hk-menu" id="hkMenu" role="dialog" aria-label="ヒカリの案内（目次）" hidden>
+<p class="hk-menu-say">どこに行く？ ヒカリが案内するね！</p>
+<ul>{nav_li}</ul>
+<p class="hk-menu-ai">AI で生成したキャラクターです。実在の人物ではありません。</p>
+</div>
+<p class="hk-tip" id="hkTip" aria-live="polite" hidden></p>
+<button type="button" class="hk-fab-btn" id="hkBtn" aria-expanded="false" aria-controls="hkMenu" aria-label="ヒカリの案内を開く（目次）"><img src="/img/hikari/chibi-s01-192.webp" width="64" height="64" alt=""></button>
+</div>
 </body>
 </html>
 """

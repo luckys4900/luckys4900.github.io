@@ -1,157 +1,50 @@
 title: 制作実績
-desc: PS Tool Factory の制作実績。Android アプリ、Web サイト・LP、AI キャラクター「ヒカリ」の素材と告知 CM、YouTube の実戦・検証動画、レポート・資料のデザインを、カテゴリ別に紹介します。
+desc: PS Tool Factory の制作実績。Android アプリ、Web サイト・LP、AI キャラクター「ヒカリ」の素材と告知 CM、YouTube の実戦・検証動画、レポート・資料のデザインを、サムネイル付きのカードで紹介します。カテゴリで絞り込めます。
 out: works/index.html
 layout: wide
 ---
-<section class="hero" style="padding-bottom:28px">
-<div class="wrap" style="grid-template-columns:1fr">
-<div>
+<section class="hero3" id="top" data-nav-label="制作実績" data-hk="point" data-hk-say="気になるカテゴリを選んでね。">
+<div class="wrap">
 <p class="crumb"><a href="/">トップ</a> › 制作実績</p>
-<span class="eyebrow">Works</span>
-<h1>制作実績</h1>
+<div class="hk-say"><img class="hk-ic" src="/img/hikari/hikari-point-256.webp" alt="" width="256" height="256"><p class="hk-bub">ここが制作実績の一覧だよ。気になるカテゴリを選んでね！</p></div>
+<span class="pill">制作実績</span>
+<h1 class="en">WORKS</h1>
 <p class="lead">アプリ開発、Web 制作、AI キャラクターと映像、レポート・資料のデザイン。これまでに作ったものを、制作時期と担当した範囲とあわせて載せています。書いているのは事実だけで、顧客の案件は店舗や会社を特定できる情報を伏せています。</p>
-</div>
 </div>
 </section>
 
-<section class="sec" style="padding-top:12px">
+<section class="sec" id="list" data-nav-label="一覧" style="padding-top:8px">
 <div class="wrap">
 <div class="filters" data-filter-group="allworks" role="group" aria-label="カテゴリで絞り込む" hidden>
 <button type="button" data-filter="all" aria-pressed="true">すべて</button>
-<button type="button" data-filter="app" aria-pressed="false">アプリ開発</button>
-<button type="button" data-filter="web" aria-pressed="false">Web 制作</button>
-<button type="button" data-filter="ai" aria-pressed="false">AI キャラクター</button>
-<button type="button" data-filter="video" aria-pressed="false">動画制作</button>
-<button type="button" data-filter="design" aria-pressed="false">レポート・デザイン</button>
+<button type="button" data-filter="app" aria-pressed="false">アプリ</button>
+<button type="button" data-filter="web" aria-pressed="false">Web</button>
+<button type="button" data-filter="ai" aria-pressed="false">AIキャラクター</button>
+<button type="button" data-filter="video" aria-pressed="false">動画</button>
+<button type="button" data-filter="design" aria-pressed="false">資料</button>
 </div>
-
-<div id="allworks">
-<div class="cat-head first" id="app"><span class="num">01</span><h2>アプリ開発</h2><p>企画・画面設計・開発・テスト・ストア掲載</p></div>
-<div class="works">
-<article class="work reveal" data-cat="app">
-<figure class="thumb"><img src="/img/koyaku/landscape.webp" alt="小役番長の横画面" width="720" height="405" loading="lazy"><figcaption class="ov">カウント・取り消し・確率表示・実践履歴。通信なしで動作します。</figcaption></figure>
-<div class="body"><div class="info"><span class="tag ok">Google Play で公開中</span><span class="when">2026年10月〜</span></div>
-<h3><a href="/koyaku/">小役番長（Android）</a></h3>
-<p><b>役割:</b> 企画・デザイン・開発・ストア運用</p>
-<p>スロットの小役をワンタップで数えるカウンター。回数とゲーム数から確率を表示し、取り消し・自動保存・実践履歴に対応。</p>
-<p class="more"><a href="https://play.google.com/store/apps/details?id=jp.pstool.koyaku" rel="noopener">Google Play</a> ／ <a href="/koyaku/">紹介ページ</a></p></div>
-</article>
-<article class="work reveal" data-cat="app">
-<figure class="thumb"><img src="/img/entry.webp" alt="遊技収支ノートの入力画面" width="360" height="759" loading="lazy" style="object-position:top"><figcaption class="ov">収支の入力、月・年の合計、ホール別・機種別の集計。</figcaption></figure>
-<div class="body"><div class="info"><span class="tag">テスト中</span><span class="when">2026年11月〜</span></div>
-<h3><a href="/ledger/">遊技収支ノート（Android）</a></h3>
-<p><b>役割:</b> 企画・デザイン・開発</p>
-<p>パチンコ・パチスロの収支を日ごとに記録し、集計で振り返る記録帳。記録は端末内に保存。Google Play の内部テスト中です。</p>
-<p class="more"><a href="/ledger/">紹介ページ</a></p></div>
-</article>
-<article class="work reveal" data-cat="app design">
-<figure class="thumb"><img src="/img/works/koyaku-feature.webp" alt="小役番長のストア掲載グラフィック" width="1024" height="500" loading="lazy"><figcaption class="ov">アプリのアイコンを中心にした、ストアの一覧で目に留まる構成。</figcaption></figure>
-<div class="body"><div class="info"><span class="tag">ストア掲載物</span><span class="when">2026年11月</span></div>
-<h3>ストア掲載グラフィック</h3>
-<p><b>役割:</b> デザイン</p>
-<p>Google Play のフィーチャーグラフィック（1024×500）と、掲載用の画面画像を制作。</p></div>
-</article>
+<div class="wk-grid" id="allworks">
+<article class="wk reveal" data-cat="app"><a class="wk-thumb" href="/koyaku/"><img src="/img/koyaku/landscape.webp" alt="小役番長の横画面" width="720" height="405" loading="lazy"></a><div class="wk-body"><p class="wk-tags"><span>#アプリ開発</span><span>#Google Play で公開中</span></p><h3><a href="/koyaku/">小役番長（Android）</a></h3><p class="wk-role"><b>役割:</b> 企画・デザイン・開発・ストア運用</p><p>スロットの小役をワンタップで数えるカウンター。回数とゲーム数から確率を表示し、取り消し・自動保存・実践履歴に対応。通信なしで動作します。</p><p class="wk-when">2026年10月〜</p><p class="wk-more"><a href="https://play.google.com/store/apps/details?id=jp.pstool.koyaku" rel="noopener">Google Play</a> ／ <a href="/koyaku/">紹介ページ</a></p></div></article>
+<article class="wk reveal" data-cat="app"><a class="wk-thumb" href="/ledger/"><img src="/img/entry.webp" alt="遊技収支ノートの入力画面" width="360" height="759" loading="lazy" style="object-position:top"></a><div class="wk-body"><p class="wk-tags"><span>#アプリ開発</span><span>#テスト中</span></p><h3><a href="/ledger/">遊技収支ノート（Android）</a></h3><p class="wk-role"><b>役割:</b> 企画・デザイン・開発</p><p>パチンコ・パチスロの収支を日ごとに記録し、集計で振り返る記録帳。記録は端末内に保存。Google Play の内部テスト中です。</p><p class="wk-when">2026年11月〜</p></div></article>
+<article class="wk reveal" data-cat="app design"><a class="wk-thumb" href="/koyaku/"><img src="/img/works/koyaku-feature.webp" alt="小役番長のストア掲載グラフィック" width="1024" height="500" loading="lazy"></a><div class="wk-body"><p class="wk-tags"><span>#アプリ開発</span><span>#ストア掲載物</span></p><h3>ストア掲載グラフィック</h3><p class="wk-role"><b>役割:</b> デザイン</p><p>Google Play のフィーチャーグラフィック（1024×500）と、掲載用の画面画像を制作。</p><p class="wk-when">2026年11月</p></div></article>
+<article class="wk reveal" data-cat="web"><a class="wk-thumb" href="/"><div class="wk-thumb txt"><span>PS Tool Factory<small>このサイト（GitHub Pages）</small></span></div></a><div class="wk-body"><p class="wk-tags"><span>#Web制作</span><span>#公開中</span></p><h3><a href="/">PS Tool Factory（このサイト）</a></h3><p class="wk-role"><b>役割:</b> 企画・デザイン・制作・運用</p><p>アプリの紹介、読み物、制作実績をまとめた静的サイト。外部のフレームワークを使わず、ライト／ダーク表示に対応。</p><p class="wk-when">2026年11月</p></div></article>
+<article class="wk reveal" data-cat="web"><a class="wk-thumb" href="https://luckys4900.github.io/koyaku-counter-site/support/"><div class="wk-thumb txt"><span>小役番長 サポート<small>プライバシーポリシー・サポート</small></span></div></a><div class="wk-body"><p class="wk-tags"><span>#Web制作</span><span>#公開中</span></p><h3><a href="https://luckys4900.github.io/koyaku-counter-site/support/">小役番長のサポートサイト</a></h3><p class="wk-role"><b>役割:</b> 制作・運用</p><p>アプリのプライバシーポリシーとサポート（よくある質問・連絡先）のページ。</p><p class="wk-when">2026年10月</p></div></article>
+<article class="wk reveal" data-cat="web"><div class="wk-thumb"><img src="/img/works/lp-demo.webp" alt="LP 制作システムで生成した架空のデモ LP" width="1200" height="633" loading="lazy"></div><div class="wk-body"><p class="wk-tags"><span>#Web制作</span><span>#社内ツール</span><span>#デモ</span></p><h3>LP 制作システム</h3><p class="wk-role"><b>役割:</b> 設計・開発</p><p>案件の情報（確定・未確定を区別）から LP を生成し、5 つの画面幅での表示テスト、表現チェック、公開前チェックまでを一続きで行う制作の仕組み。画像は架空の会社名・文言で生成したデモ LP です。</p><p class="wk-when">2026年10月〜</p></div></article>
+<article class="wk reveal" data-cat="web"><div class="wk-thumb txt"><span>週次告知 LP<small>店舗情報は伏せています</small></span></div><div class="wk-body"><p class="wk-tags"><span>#Web制作</span><span>#未公開</span></p><h3>パチンコ店向けの週次告知 LP</h3><p class="wk-role"><b>役割:</b> 構成・デザイン・制作</p><p>上の制作システムで作った、店舗の週ごとの告知 LP。スマホ・PC の表示テストと、広告表現のチェックを通しています。店舗の確認待ちで未公開のため、画面は載せていません。</p><p class="wk-when">2026年10月</p></div></article>
+<article class="wk reveal" data-cat="ai"><a class="wk-thumb" href="/works/hikari.html"><img src="/img/works/hikari-faces.webp" alt="AI キャラクター、ヒカリの表情の素材 3 枚" width="1200" height="243" loading="lazy"></a><div class="wk-body"><p class="wk-tags"><span>#AIキャラクター</span><span>#AI生成</span></p><h3><a href="/works/hikari.html">ヒカリ（HIKARI）のキャラクター素材</a></h3><p class="wk-role"><b>役割:</b> 企画・制作</p><p>正式な顔と衣装を決め、ポーズや表情ごとの素材を用意。素材ごとに顔の一致度を測り、使えるものだけを映像に使っています。ヒカリは AI で生成したキャラクターで、実在の人物ではありません。</p><p class="wk-when">2026年11月</p></div></article>
+<article class="wk reveal" data-cat="ai"><a class="wk-thumb" href="/works/hikari.html#pipeline"><img src="/img/works/cm2-cutin.webp" alt="ヒカリのカットイン場面" width="1200" height="675" loading="lazy"></a><div class="wk-body"><p class="wk-tags"><span>#AIキャラクター</span><span>#制作パイプライン</span></p><h3><a href="/works/hikari.html#pipeline">画像・動画の制作パイプライン</a></h3><p class="wk-role"><b>役割:</b> 設計・制作</p><p>静止画 → 動き → 切り抜き → 声と口の動き → 画面の合成 → 書き出し → 審査、の流れを手元の PC で組んでいます。</p><p class="wk-when">2026年11月</p></div></article>
+<article class="wk reveal" data-cat="video ai"><a class="wk-thumb" href="/works/hikari.html#cm1"><img src="/img/works/cm1-undo.webp" alt="告知 CM 第1弾の場面。取り消しの機能を見せるアプリ画面" width="1200" height="675" loading="lazy"></a><div class="wk-body"><p class="wk-tags"><span>#動画</span><span>#AIキャラクター</span><span>#告知CM</span></p><h3><a href="/works/hikari.html#cm1">小役番長 告知 CM 第1弾（横 25 秒）</a></h3><p class="wk-role"><b>役割:</b> 企画・構成・映像・音声・書き出し</p><p>7 場面の声主導の構成。タップ・取り消し・履歴をアプリの画面で見せ、配信告知で締めます。画面の数値は架空です。</p><p class="wk-when">2026年11月</p></div></article>
+<article class="wk reveal" data-cat="video ai"><a class="wk-thumb" href="/works/hikari.html#cm2"><img src="/img/works/cm2-count.webp" alt="告知 CM 第2弾の場面。タップで確率が出るアプリ画面" width="1200" height="675" loading="lazy"></a><div class="wk-body"><p class="wk-tags"><span>#動画</span><span>#AIキャラクター</span><span>#告知CM</span></p><h3><a href="/works/hikari.html#cm2">小役番長 告知 CM 第2弾（横 30 秒）</a></h3><p class="wk-role"><b>役割:</b> 企画・構成・映像・音声・書き出し</p><p>機能の紹介を、オリジナルの演出の段階に置き換えた構成。特定の機種の映像・キャラクター・音は使っていません。</p><p class="wk-when">2026年11月</p></div></article>
+<article class="wk reveal wk-yt" data-cat="video"><div class="wk-thumb yt-thumb"><a class="yt has-thumb" href="https://www.youtube.com/watch?v=2Rq7k77Bia4" data-yt="2Rq7k77Bia4" data-title="パチンコの実戦動画" rel="noopener"><img src="https://i.ytimg.com/vi/2Rq7k77Bia4/hqdefault.jpg" alt="パチンコの実戦動画のサムネイル" width="480" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="yt-label">実戦</span><span class="yt-play" aria-hidden="true"></span></a></div><div class="wk-body"><p class="wk-tags"><span>#動画</span><span>#YouTube</span><span>#通常の動画</span></p><h3>パチンコの実戦動画</h3><p>持ち球の表示と差玉のグラフで、1 回の実戦を最後まで追う。</p><p class="wk-when">2026年10月17日公開</p></div></article>
+<article class="wk reveal wk-yt" data-cat="video"><div class="wk-thumb yt-thumb"><a class="yt has-thumb" href="https://www.youtube.com/watch?v=JEUF-Dk5RCc" data-yt="JEUF-Dk5RCc" data-title="パチンコの検証動画" rel="noopener"><img src="https://i.ytimg.com/vi/JEUF-Dk5RCc/hqdefault.jpg" alt="パチンコの検証動画のサムネイル" width="480" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="yt-label">検証</span><span class="yt-play" aria-hidden="true"></span></a></div><div class="wk-body"><p class="wk-tags"><span>#動画</span><span>#YouTube</span><span>#通常の動画</span></p><h3>パチンコの検証動画</h3><p>約 50% と言われる分岐を、実戦で記録する。</p><p class="wk-when">2026年11月8日公開</p></div></article>
+<article class="wk reveal wk-yt is-short" data-cat="video"><div class="wk-thumb yt-thumb short"><a class="yt has-thumb" href="https://www.youtube.com/shorts/Wbsr4FTBS3Y" data-yt="Wbsr4FTBS3Y" data-title="パチスロの検証ショート" rel="noopener"><img src="https://i.ytimg.com/vi/Wbsr4FTBS3Y/hqdefault.jpg" alt="パチスロの検証ショートのサムネイル" width="480" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="yt-label">検証</span><span class="yt-play" aria-hidden="true"></span></a></div><div class="wk-body"><p class="wk-tags"><span>#動画</span><span>#YouTube</span><span>#ショート</span></p><h3>パチスロの検証ショート</h3><p>リセット後 200G までの当選の割合を確かめる。</p><p class="wk-when">2026年11月13日公開</p></div></article>
+<article class="wk reveal wk-yt is-short" data-cat="video"><div class="wk-thumb yt-thumb short"><a class="yt has-thumb" href="https://www.youtube.com/shorts/LmkNgEGmEPs" data-yt="LmkNgEGmEPs" data-title="パチスロの実戦ショート" rel="noopener"><img src="https://i.ytimg.com/vi/LmkNgEGmEPs/hqdefault.jpg" alt="パチスロの実戦ショートのサムネイル" width="480" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="yt-label">実戦</span><span class="yt-play" aria-hidden="true"></span></a></div><div class="wk-body"><p class="wk-tags"><span>#動画</span><span>#YouTube</span><span>#ショート</span></p><h3>パチスロの実戦ショート</h3><p>約 24% のボス戦を、見出しで回数を区切って見せる。</p><p class="wk-when">2026年11月2日公開</p></div></article>
+<article class="wk reveal wk-yt is-short" data-cat="video"><div class="wk-thumb yt-thumb short"><a class="yt has-thumb" href="https://www.youtube.com/shorts/ZwUq7OCHF_k" data-yt="ZwUq7OCHF_k" data-title="パチンコの実戦ショート" rel="noopener"><img src="https://i.ytimg.com/vi/ZwUq7OCHF_k/hqdefault.jpg" alt="パチンコの実戦ショートのサムネイル" width="480" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="yt-label">実戦</span><span class="yt-play" aria-hidden="true"></span></a></div><div class="wk-body"><p class="wk-tags"><span>#動画</span><span>#YouTube</span><span>#ショート</span></p><h3>パチンコの実戦ショート</h3><p>残りわずかの場面で、最後の演出を見せる。</p><p class="wk-when">2026年10月30日公開</p></div></article>
+<article class="wk reveal wk-yt is-short" data-cat="video"><div class="wk-thumb yt-thumb short"><a class="yt has-thumb" href="https://www.youtube.com/shorts/uGb242Wpx6o" data-yt="uGb242Wpx6o" data-title="パチンコの実戦ショート" rel="noopener"><img src="https://i.ytimg.com/vi/uGb242Wpx6o/hqdefault.jpg" alt="パチンコの実戦ショートのサムネイル" width="480" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="yt-label">実戦</span><span class="yt-play" aria-hidden="true"></span></a></div><div class="wk-body"><p class="wk-tags"><span>#動画</span><span>#YouTube</span><span>#ショート</span></p><h3>パチンコの実戦ショート</h3><p>約 51% の分岐の場面を切り出す。</p><p class="wk-when">2026年11月9日公開</p></div></article>
+<article class="wk reveal" data-cat="design"><a class="wk-thumb" href="/works/reports.html"><img src="/img/works/report-trend.webp" alt="月次レポートのデザイン見本。架空の数値の折れ線グラフ" width="1200" height="675" loading="lazy"></a><div class="wk-body"><p class="wk-tags"><span>#資料デザイン</span><span>#デザイン見本</span></p><h3><a href="/works/reports.html">月次 稼働レポート（デザイン見本）</a></h3><p class="wk-role"><b>役割:</b> 構成・デザイン</p><p>パチンコ店向けの月次レポートを想定し、架空のデータで作った 4 枚の見本。毎月同じ型で比べられる構成です。数値・グラフはすべて架空です。</p><p class="wk-when">2026年11月</p></div></article>
+<article class="wk reveal" data-cat="design"><a class="wk-thumb" href="/works/reports.html#flow"><img src="/img/works/report-flow.webp" alt="レポート制作の進め方のスライド見本" width="1200" height="675" loading="lazy"></a><div class="wk-body"><p class="wk-tags"><span>#資料デザイン</span><span>#デザイン見本</span></p><h3><a href="/works/reports.html#flow">提案スライド（デザイン見本）</a></h3><p class="wk-role"><b>役割:</b> 構成・デザイン</p><p>レポート制作の進め方（ヒアリングから納品・更新までの 4 段階）を 1 枚で伝える提案スライドの見本。</p><p class="wk-when">2026年11月</p></div></article>
 </div>
-
-<div class="cat-head" id="web"><span class="num">02</span><h2>Web 制作</h2><p>サイト・LP・制作の仕組み</p></div>
-<div class="works">
-<article class="work reveal" data-cat="web">
-<div class="thumb txt">PS Tool Factory<small>このサイト（GitHub Pages）</small></div>
-<div class="body"><div class="info"><span class="tag ok">公開中</span><span class="when">2026年11月</span></div>
-<h3><a href="/">PS Tool Factory（このサイト）</a></h3>
-<p><b>役割:</b> 企画・デザイン・制作・運用</p>
-<p>アプリの紹介、読み物、制作実績をまとめた静的サイト。外部のフレームワークを使わず、ライト／ダーク表示に対応。</p></div>
-</article>
-<article class="work reveal" data-cat="web">
-<div class="thumb txt">小役番長 サポート<small>プライバシーポリシー・サポート</small></div>
-<div class="body"><div class="info"><span class="tag ok">公開中</span><span class="when">2026年10月</span></div>
-<h3>小役番長のサポートサイト</h3>
-<p><b>役割:</b> 制作・運用</p>
-<p>アプリのプライバシーポリシーとサポート（よくある質問・連絡先）のページ。</p>
-<p class="more"><a href="https://luckys4900.github.io/koyaku-counter-site/support/" rel="noopener">サポートページ</a></p></div>
-</article>
-<article class="work reveal" data-cat="web">
-<figure class="thumb"><img src="/img/works/lp-demo.webp" alt="LP 制作システムで生成した架空のデモ LP" width="1200" height="633" loading="lazy"><figcaption class="ov">画像は架空の会社名・文言で生成したデモ LP です。</figcaption></figure>
-<div class="body"><div class="info"><span class="tag">社内ツール</span><span class="when">2026年10月〜</span></div>
-<h3>LP 制作システム</h3>
-<p><b>役割:</b> 設計・開発</p>
-<p>案件の情報（確定・未確定を区別）から LP を生成し、5 つの画面幅での表示テスト、表現チェック、公開前チェックまでを一続きで行う制作の仕組み。</p></div>
-</article>
-<article class="work reveal" data-cat="web">
-<div class="thumb txt">パチンコ店向け 週次告知 LP<small>店舗情報は伏せています</small></div>
-<div class="body"><div class="info"><span class="tag">店舗の確認待ち・未公開</span><span class="when">2026年10月</span></div>
-<h3>パチンコ店向けの週次告知 LP</h3>
-<p><b>役割:</b> 構成・デザイン・制作</p>
-<p>上の制作システムで作った、店舗の週ごとの告知 LP。スマホ・PC の表示テストと、広告表現のチェックを通しています。店舗の確認待ちで未公開のため、画面は載せていません。</p></div>
-</article>
-</div>
-
-<div class="cat-head" id="ai"><span class="num">03</span><h2>AI キャラクター</h2><p>キャラクター設定・画像と動画の制作パイプライン</p></div>
-<div class="works">
-<article class="work reveal" data-cat="ai">
-<figure class="thumb"><img src="/img/works/hikari-faces.webp" alt="AI キャラクター、ヒカリの表情の素材 3 枚" width="1200" height="243" loading="lazy"><figcaption class="ov">ヒカリは AI で生成したキャラクターです。実在の人物ではありません。</figcaption></figure>
-<div class="body"><div class="info"><span class="tag ai">AI 生成</span><span class="when">2026年11月</span></div>
-<h3><a href="/works/hikari.html">ヒカリ（HIKARI）のキャラクター素材</a></h3>
-<p><b>役割:</b> 企画・制作</p>
-<p>正式な顔と衣装を決め、ポーズや表情ごとの素材を用意。素材ごとに顔の一致度を測り、使えるものだけを映像に使っています。</p>
-<p class="more"><a href="/works/hikari.html">詳しく見る</a></p></div>
-</article>
-<article class="work reveal" data-cat="ai">
-<figure class="thumb"><img src="/img/works/cm2-cutin.webp" alt="ヒカリのカットイン場面" width="1200" height="675" loading="lazy"><figcaption class="ov">静止画に動きを付け、声と口の動きを合わせています。</figcaption></figure>
-<div class="body"><div class="info"><span class="tag ai">AI 生成</span><span class="when">2026年11月</span></div>
-<h3><a href="/works/hikari.html#pipeline">画像・動画の制作パイプライン</a></h3>
-<p><b>役割:</b> 設計・制作</p>
-<p>静止画 → 動き（ローカルの画像から動画への生成）→ 切り抜き → 声と口の動き → 画面の合成 → 書き出し → 審査、の流れを手元の PC で組んでいます。</p>
-<p class="more"><a href="/works/hikari.html#pipeline">制作の流れを見る</a></p></div>
-</article>
-</div>
-
-<div class="cat-head" id="video"><span class="num">04</span><h2>動画制作</h2><p>YouTube の実戦・検証動画、アプリの告知 CM</p></div>
-<div class="works">
-<article class="work reveal" data-cat="video">
-<figure class="thumb mosaic"><img src="https://i.ytimg.com/vi/Wbsr4FTBS3Y/hqdefault.jpg" alt="検証ショートのサムネイル" width="480" height="360" loading="lazy" referrerpolicy="no-referrer"><img src="https://i.ytimg.com/vi/LmkNgEGmEPs/hqdefault.jpg" alt="実戦ショートのサムネイル" width="480" height="360" loading="lazy" referrerpolicy="no-referrer"><img src="https://i.ytimg.com/vi/ZwUq7OCHF_k/hqdefault.jpg" alt="実戦ショートのサムネイル" width="480" height="360" loading="lazy" referrerpolicy="no-referrer"><figcaption class="ov">ショートは上下の帯に見出しと補足を入れる型。画像は YouTube のサムネイルです。</figcaption></figure>
-<div class="body"><div class="info"><span class="tag ok">公開中</span><span class="tag">動画</span><span class="when">2026年10月〜</span></div>
-<h3><a href="/works/youtube.html">YouTube の実戦・検証動画（16 本以上）</a></h3>
-<p><b>役割:</b> 構成・編集・字幕とナレーション・画面のデザイン</p>
-<p>パチンコ・パチスロの実戦と検証の動画。持ち球の表示や差玉のグラフを入れ、周りの台はぼかして公開しています（18 歳以上向け）。</p>
-<p class="more"><a href="/works/youtube.html">動画の例を見る</a></p></div>
-</article>
-<article class="work reveal" data-cat="video ai">
-<figure class="thumb"><img src="/img/works/cm1-undo.webp" alt="告知 CM 第1弾の場面。取り消しの機能を見せるアプリ画面" width="1200" height="675" loading="lazy"><figcaption class="ov">キャンペーンガール役のヒカリが、アプリの機能を順に紹介します。</figcaption></figure>
-<div class="body"><div class="info"><span class="tag">動画</span><span class="tag ai">AI キャラクター</span><span class="when">2026年11月</span></div>
-<h3><a href="/works/hikari.html#cm1">小役番長 告知 CM 第1弾（横 25 秒）</a></h3>
-<p><b>役割:</b> 企画・構成・映像・音声・書き出し</p>
-<p>7 場面の声主導の構成。タップ・取り消し・履歴をアプリの画面で見せ、配信告知で締めます。</p></div>
-</article>
-<article class="work reveal" data-cat="video ai">
-<figure class="thumb"><img src="/img/works/cm2-count.webp" alt="告知 CM 第2弾の場面。タップで確率が出るアプリ画面" width="1200" height="675" loading="lazy"><figcaption class="ov">ネオンのトンネルの背景と、テンポの速い BGM で第1弾と別物に。</figcaption></figure>
-<div class="body"><div class="info"><span class="tag">動画</span><span class="tag ai">AI キャラクター</span><span class="when">2026年11月</span></div>
-<h3><a href="/works/hikari.html#cm2">小役番長 告知 CM 第2弾（横 30 秒）</a></h3>
-<p><b>役割:</b> 企画・構成・映像・音声・書き出し</p>
-<p>機能の紹介を、オリジナルの演出の段階に置き換えた構成。特定の機種の映像・キャラクター・音は使っていません。</p></div>
-</article>
-</div>
-
-<div class="cat-head" id="design"><span class="num">05</span><h2>レポート・資料デザイン</h2><p>月次レポート・提案スライド</p></div>
-<div class="works">
-<article class="work reveal" data-cat="design">
-<figure class="thumb"><img src="/img/works/report-trend.webp" alt="月次レポートのデザイン見本。架空の数値の折れ線グラフ" width="1200" height="675" loading="lazy"><figcaption class="ov">数値・グラフはすべて架空です。</figcaption></figure>
-<div class="body"><div class="info"><span class="tag">デザイン見本</span><span class="when">2026年11月</span></div>
-<h3><a href="/works/reports.html">月次 稼働レポート（デザイン見本）</a></h3>
-<p><b>役割:</b> 構成・デザイン</p>
-<p>パチンコ店向けの月次レポートを想定し、架空のデータで作った 4 枚の見本。毎月同じ型で比べられる構成です。</p>
-<p class="more"><a href="/works/reports.html">見本を見る</a></p></div>
-</article>
-<article class="work reveal" data-cat="design">
-<figure class="thumb"><img src="/img/works/report-flow.webp" alt="レポート制作の進め方のスライド見本" width="1200" height="675" loading="lazy"><figcaption class="ov">ヒアリングから納品・更新までの 4 段階。</figcaption></figure>
-<div class="body"><div class="info"><span class="tag">デザイン見本</span><span class="when">2026年11月</span></div>
-<h3><a href="/works/reports.html#flow">提案スライド（デザイン見本）</a></h3>
-<p><b>役割:</b> 構成・デザイン</p>
-<p>レポート制作の進め方を 1 枚で伝える提案スライドの見本。</p></div>
-</article>
-</div>
-</div>
-
-<p class="note" style="margin-top:40px">掲載している画像のうち、レポートと LP のデモは架空のデータで作ったものです。AI キャラクター「ヒカリ」は AI で生成したキャラクターで、実在の人物ではありません。パチンコ・パチスロに関する制作物は 18 歳以上の方を対象としており、遊技を勧めるものではありません。</p>
+<p class="note" style="margin-top:40px">掲載している画像のうち、レポートと LP のデモは架空のデータで作ったものです。AI キャラクター「ヒカリ」は AI で生成したキャラクターで、実在の人物ではありません。パチンコ・パチスロに関する制作物は 18 歳以上の方を対象としており、遊技を勧めるものではありません。YouTube のサムネイルは YouTube の画像サーバーから表示しており、動画は押したときにだけ youtube-nocookie.com から読み込みます。</p>
+<p><a class="btn-y" href="/contact.html">制作の相談をする</a><a class="btn-line" href="https://www.youtube.com/@pachinko_iinkai" rel="noopener">YouTube を見る</a></p>
 </div>
 </section>
