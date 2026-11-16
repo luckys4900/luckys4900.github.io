@@ -388,6 +388,11 @@ em{font-style:normal}
   .hk-bub.down::before{left:auto;right:40px}
   .hero2{min-height:0}
 }
+@media(max-width:640px){
+  /* 右下の追従ヒカリ（56px）と重ならないよう、吹き出しを左へ寄せる */
+  .hk-bub.down{right:auto;left:-104px}
+  .hk-bub.down::before{right:24px}
+}
 @media(max-width:640px){.hk-ic{width:56px;height:56px}}
 @media(max-width:560px){
   .hero2 h1{gap:12px}.hero2 h1 .big{font-size:72px}.hero2 h1 .jp{font-size:24px}
