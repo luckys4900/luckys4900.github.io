@@ -20,6 +20,16 @@ PAGES = os.path.join(ROOT, "_build", "pages")
 SITE = "https://luckys4900.github.io"
 UPDATED = "2026-11-15"
 BRAND = "PS Tool Factory"
+
+
+def _asset_version(name):
+    """CSS・JS の中身から版番号を作る。中身が変わると URL も変わり、古いキャッシュが使われなくなる。"""
+    import hashlib
+    with open(os.path.join(ROOT, name), "rb") as f:
+        return hashlib.sha256(f.read()).hexdigest()[:10]
+
+
+ASSET_V = {n: _asset_version(n) for n in ("style.css", "main.js")}
 YT_URL = "https://www.youtube.com/@pachinko_iinkai"
 
 NAV = [
@@ -88,8 +98,8 @@ def render(meta, body):
 <meta property="og:title" content="{html.escape(full_title)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{SITE}{url}">
-<link rel="stylesheet" href="/style.css">
-<script src="/main.js" defer></script>
+<link rel="stylesheet" href="/style.css?v={ASSET_V['style.css']}">
+<script src="/main.js?v={ASSET_V['main.js']}" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
@@ -149,6 +159,21 @@ def main():
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         io.open(dst, "w", encoding="utf-8", newline="\n").write(render(meta, body))
         outs.append(meta["out"])
+    # 公開用の全 HTML（_build で作らないページも含む）が、版番号付きの CSS・JS を読んでいるか確かめる。
+    # 版番号がないと、以前に来た人のブラウザに古い CSS が残り、新しい HTML だけが崩れて表示される。
+    bad = []
+    for d, dirs, files in os.walk(ROOT):
+        dirs[:] = [x for x in dirs if not x.startswith((".", "_"))]
+        for fn in files:
+            if fn.endswith(".html"):
+                p = os.path.join(d, fn)
+                t = io.open(p, encoding="utf-8").read()
+                if 'href="/style.css"' in t or 'src="/main.js"' in t or (
+                        "/style.css" in t and f"/style.css?v={ASSET_V['style.css']}" not in t):
+                    bad.append(os.path.relpath(p, ROOT))
+    if bad:
+        print("版番号のない、または古い版番号の CSS・JS を読んでいるページ:\n  " + "\n  ".join(bad), file=sys.stderr)
+        return 1
     # sitemap.xml
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
