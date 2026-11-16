@@ -30,6 +30,16 @@ async function auditHikari() {
     return s + (sec ? ' @' + (sec.id || sec.className || 'section') : '');
   };
 
+  // 要素のうち、overflow が visible でない祖先の内側に収まって実際に見えている範囲
+  const visibleRect = el => {
+    let v = abs(el);
+    for (let a = el.parentElement; a && a !== document.documentElement; a = a.parentElement) {
+      const s = getComputedStyle(a);
+      if (/(hidden|clip|auto|scroll)/.test(s.overflow + s.overflowX + s.overflowY)) v = inter(v, abs(a));
+    }
+    return v;
+  };
+
   const issues = [];
   const imgs = [...document.querySelectorAll('img')].filter(i => /\/img\/hikari\//.test(i.currentSrc || i.src));
   // 重なりを調べる相手: 文字や操作部品を持つ要素（画像自身の祖先・子孫は除く）
@@ -113,8 +123,9 @@ async function auditHikari() {
     const own = img.closest('figure,.hero-hk,.hk-ic,[class*=hk-]') || img.parentElement;
     for (const c of content) {
       if (c.contains(img) || img.contains(c) || own.contains(c) || c.contains(own)) continue;
-      const C = abs(c);
-      const I = inter(R, C);
+      // 両方とも「実際に見えている部分」どうしで比べる（overflow で隠れている部分は重なりに数えない）
+      const C = visibleRect(c);
+      const I = inter(visibleRect(img), C);
       const w = I.r - I.l, h = I.b - I.t;
       if (w > 4 && h > 4) {
         issues.push({ type: 'OVERLAP', img: name(img), src: (img.currentSrc || '').split('/').pop(), with: name(c), text: (c.innerText || '').trim().slice(0, 24), px: Math.round(w) + 'x' + Math.round(h) });

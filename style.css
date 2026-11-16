@@ -638,4 +638,7 @@ em{font-style:normal}
   .wk-band figure{width:104px}
   .wk-band-tx{padding:16px 14px 16px 0}
   .wk-band-sub{font-size:12.5px}
+  /* 帯の中には全身のヒカリがいるので、スマホでは顔アイコンを省き、吹き出しを帯の幅いっぱいに使う */
+  .wk-band .hk-ic{display:none}
+  .wk-band .hk-say .hk-bub::before{display:none}
 }
