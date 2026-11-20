@@ -376,7 +376,11 @@ em{font-style:normal}
 .tile img{display:block;width:100%;height:auto;border-radius:9px}
 @keyframes colUp{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 8px))}}
 .hero-hk{position:relative;align-self:end;margin-bottom:-1px}
-.hero-hk>img{display:block;width:100%;max-width:300px;height:auto;margin:0 auto}
+.hero-hk .hk-stage{position:relative;display:block;width:100%;max-width:300px;margin:0 auto}
+.hero-hk .hk-stage>img:first-child{display:block;width:100%;height:auto}
+.hero-hk .hk-icon{position:absolute;left:21%;top:21%;width:30%;height:auto;pointer-events:none;filter:drop-shadow(0 6px 6px rgba(70,50,130,.28));animation:hkIconFloat 4s ease-in-out infinite}
+@keyframes hkIconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3%)}}
+@media(prefers-reduced-motion:reduce){.hero-hk .hk-icon{animation:none}}
 .wm{position:absolute;left:0;right:0;bottom:-22px;margin:0;text-align:center;font-family:var(--fh);font-size:clamp(70px,15vw,210px);font-weight:300;line-height:1;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(142,124,216,.32);pointer-events:none;z-index:-1;letter-spacing:.02em}
 @media(max-width:1180px){.hero-grid{grid-template-columns:minmax(0,1fr) 300px 230px;padding:20px 24px 0}.hero2 h1 .jp{font-size:28px}.hero-text{padding:32px 26px}}
 @media(max-width:900px){
@@ -467,9 +471,12 @@ em{font-style:normal}
 .hero3-text{flex:1;min-width:0;max-width:760px;padding-bottom:20px}
 .hero3 .lead{font-size:14.5px;margin:6px 0 18px;max-width:40em;color:var(--ink)}
 .hero3 .stand{width:230px}
+.hero3-text{position:relative}
+.hero3 .creative-icon{position:absolute;right:0;top:4px;width:210px;height:auto;pointer-events:none;filter:drop-shadow(0 8px 14px rgba(94,76,170,.2))}
+.hero3 .lead{max-width:min(40em,calc(100% - 230px))}
 .crumb{font-size:13px;margin:0 0 14px;color:var(--ink)}.crumb a{color:var(--ink)}
 .hero3 .sec-head{margin:0}
-@media(max-width:760px){.hero3-in{flex-direction:column;align-items:stretch}.hero3 .stand{width:130px;align-self:flex-end;margin-top:-10px}}
+@media(max-width:760px){.hero3 .creative-icon{position:static;display:block;width:150px;margin:-4px 0 4px auto}.hero3 .lead{max-width:40em}.hero3-in{flex-direction:column;align-items:stretch}.hero3 .stand{width:130px;align-self:flex-end;margin-top:-10px}}
 
 /* --- 動画 --- */
 .yt-band{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:26px;align-items:start}
