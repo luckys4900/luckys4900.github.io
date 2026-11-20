@@ -1,2 +1,2 @@
-# app-ads.txt for 遊技収支ノート
-# AdMob の発行者 ID の登録後に記載します。
+# app-ads.txt for luckys4900.github.io（小役番長・遊技収支ノート）
+google.com, pub-6702778032915501, DIRECT, f08c47fec0942fa0
