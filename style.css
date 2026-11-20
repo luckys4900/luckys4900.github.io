@@ -438,6 +438,9 @@ em{font-style:normal}
 .wk:hover .wk-plus{transform:scale(1.12)}
 .wk-role b{color:var(--ink)}
 .wk-body .wk-when{font-size:12px}
+.wk-thumb.vid{padding:0;background:#0d1018}
+.wk-thumb.vid video{width:100%;height:100%;display:block;object-fit:contain;background:#0d1018}
+.wk-body .wk-note{font-size:12px;color:var(--ink-soft,#6b6880)}
 .car-ctrl{display:flex;justify-content:flex-end;gap:12px;margin-top:-4px}
 .car-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--ink);background:#fff;color:var(--ink);font-size:24px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0 0 3px;transition:background .2s}
 .car-btn:hover{background:var(--lav)}
@@ -709,7 +712,7 @@ body{background:
 .cta-hk{overflow:hidden}
 
 /* CHARACTER セクション */
-.chara-poses{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;max-width:1040px;margin:30px auto 0}
+.chara-poses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:860px;margin:30px auto 0}
 .chara-poses figure{margin:0;background:#fff;border-radius:24px;padding:12px;box-shadow:var(--sh);line-height:0}
 .chara-poses img{display:block;width:100%;height:auto;border-radius:14px}
 .chara-cap{text-align:center;font-size:13px;margin:14px 0 0}
@@ -725,6 +728,7 @@ body{background:
 .chara-cm img{display:block;width:100%;height:auto;border-radius:12px}
 .chara-sec{background:radial-gradient(50vmax 32vmax at 10% 30%,rgba(255,220,203,.55),transparent 70%),radial-gradient(46vmax 30vmax at 92% 70%,rgba(228,220,250,.6),transparent 70%)}
 @media(max-width:860px){.chara-poses{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.chara-body{grid-template-columns:1fr}.chara-card{padding:22px 20px}.chara-cm{grid-template-columns:1fr}}
+@media(max-width:860px){.chara-poses figure:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - 7px);justify-self:center}}
 .chara-body{align-items:start}
 
 /* 全身 3 ポーズの並び（合成画像を使わず、元素材を個別に並べる） */
