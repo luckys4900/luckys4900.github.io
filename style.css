@@ -1024,3 +1024,10 @@ th{white-space:nowrap}
 .mvc-d.chara .hk-ic{width:100%;height:auto;aspect-ratio:1;box-shadow:0 0 0 4px #fff,0 8px 22px rgba(94,76,170,.32)}
 @media(max-width:560px){.mvc-d.chara .hk-ic{box-shadow:0 0 0 3px #fff,0 6px 14px rgba(94,76,170,.3)}}
 .mvc-d.chara figcaption{left:auto;right:0}
+
+/* ===== 公開前修正 ===== */
+.shots:not(.wide) figure{flex:0 1 170px}
+/* 最初の画面のスマホ枠: 新しい縦長の画面（360x800）でも枠の比率を従来の 9:16 に保ち、ラベルが他の要素に隠れないようにする */
+.mvc-ph img{aspect-ratio:9/16;object-fit:cover;object-position:top;width:100%;height:auto}
+/* 最初の画面: 「Web 制作」のラベルが手前の動画プレーヤーに隠れるため、PC 画面の枠の上辺に移す */
+.mvc-d.pc figcaption{top:-11px;bottom:auto;left:auto;right:14px}
