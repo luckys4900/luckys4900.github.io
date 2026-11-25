@@ -164,6 +164,19 @@ MV2 の CSS に直接書かれている色（変数化されていない）:
 5. **人物を含む画像は加工しない**: FV の CM（告知 CM 第 1 弾）、CM 第 2 弾（04）、キャラクター制作（05）は彩度・色調を変えない。ヒカリの顔は加工しない（style.css のコメントの指定）。
 6. **背景**: 画像枠の背景は淡い `#eceaf4`。画像の比率が枠と違うときに地が見える。
 
+### 7.1 制作実績のカード画像（`.wk-thumb`: 一覧 `/works/` とトップのカルーセル）— 2026-11-25 追記
+
+1. **全カード同じ比率 16:10**（`aspect-ratio:16/10`）。素材ごとに比率を変えない。余白（台紙）なし、`object-fit: cover` で枠いっぱいに表示する。
+2. **素材を枠に合わせる方法**: 縦長・横長の素材は、`object-position` で切り抜くのではなく、**16:10（1200×750）の合成画像を別に作って使う**（顔・文字を切らない。原本は変更しない）。
+   - 縦長のチラシ・ポスター: 2 枚を同じ高さで並べる（`pf/hanawado-card.webp`・`pf/koyaku-chara-card.webp`）。ポスター＋パネルの組（`pf/bigkatsu-card.webp`）。
+   - 縦画面のアプリ: 3 枚を並べる（`app-latest/koyaku-trio-wide.webp`・`ledger-trio.webp`）。
+   - 横長すぎる・縦に足りない素材: 上下を同色で延長（`koyaku-feature-card.webp`）、白地に置く（`pf/mascot-guide-card.webp`）。
+   - 16 ポーズのシートは上半分（`pf/koyaku-chibi-card.webp`）。人物 3 枚の並べ（`hikari/hk-line-card.webp`、頭の上に余白 5%）。
+3. **動画・YouTube のサムネイル**は 16:10 の枠で表示する（動画プレーヤーは `contain`、YouTube は `cover`）。
+4. **行の高さ**: `/works/` の一覧は `align-items:stretch` で同じ行の高さをそろえ、日付・リンクを `margin-top:auto` でカード下部にそろえる。カード内の最長の空白は、カードの高さの 20% 以内（`fill-check.cjs --card` で確認）。本文が短いカードには、事実の範囲で 1 文足す。
+5. **できること（services `.svc2-img`）**は 4:3。素材は枠の比率に合う合成（`hikari/hk-line-43.webp`・`app-latest/koyaku-trio.webp`・`works/cm2-rush-43.webp`）を使う。
+6. 6 領域（`.m2-ph`）は幅ごとに枠の比率が変わるため、02・06 は `<picture>` で比率別の画像（`web-real*.webp`・`report-set*.webp`）を切り替える。04 は列幅 5（`--c:5`）、05 は列幅 4。
+
 ## 8. ホバー・動き
 
 | 対象 | 通常時 | ホバー時 | 動き |

@@ -1049,3 +1049,14 @@ th{white-space:nowrap}
 
 .wide .m2-areas+.sec{padding-top:96px}
 @media(max-width:767px){.wide .m2-areas+.sec{padding-top:64px}}
+
+/* ===== 素材修正 2026-11-25 ===== */
+/* 制作実績の一覧・カルーセルのカード画像: 全カード同じ比率 16:10、余白なし（枠いっぱいに cover）。縦長・横長の素材は合成画像で 16:10 にそろえる */
+.wk-thumb{padding:0;aspect-ratio:16/10}
+.wk-thumb.txt{padding:14px}
+.wk-thumb>img{border-radius:0;object-fit:cover;object-position:50% 50%}
+.wk-yt.is-short .wk-thumb{aspect-ratio:16/10}
+/* 一覧は同じ行のカードの高さをそろえ、日付・リンクを下にそろえる */
+.wk-grid{align-items:stretch}
+.wk-grid .wk{height:auto}
+.wk-grid .wk-body>:last-child{margin-top:auto}
