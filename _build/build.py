@@ -84,6 +84,7 @@ def render(meta, body):
     nav_li = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in NAV)
     foot_li = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in FOOT)
     desc_tag = f'<meta name="description" content="{html.escape(desc)}">\n' if desc else ""
+    og_extra = ('<meta property="og:description" content="' + html.escape(desc) + '">' + chr(10)) if desc else ""
     layout = meta.get("layout", "page")
     if layout == "wide":
         main_html = '<main id="main" class="wide">\n' + body + '</main>'
@@ -100,6 +101,12 @@ def render(meta, body):
 <meta property="og:title" content="{html.escape(full_title)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{SITE}{url}">
+{og_extra}<meta property="og:image" content="{SITE}/img/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="{BRAND}">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
