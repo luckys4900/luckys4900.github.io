@@ -746,3 +746,25 @@ figure .hk-line{border-radius:16px}
 /* 運営者欄の「案内係ヒカリ」カードは、運営者本人に見えないよう顔アイコンで示す */
 .guide-card .guide-ic{width:96px;height:96px;flex:none}
 @media(max-width:640px){.guide-card .guide-ic{width:72px;height:72px}}
+
+/* 販促物などの縦長ポスターの一覧・実績の数・拡大表示 */
+.gallery.poster{grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
+.gallery.poster img{aspect-ratio:auto;object-fit:contain;background:#1b1410}
+.gallery a.zoom{display:block;cursor:zoom-in;position:relative}
+.gallery a.zoom::after{content:"＋";position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;background:rgba(21,27,41,.72);color:#fff;font-weight:800;display:grid;place-items:center;font-size:.95rem;opacity:.85}
+.pf-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:22px 0}
+.pf-stats p{margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 12px;text-align:center;box-shadow:var(--shadow)}
+.pf-stats b{display:block;font-size:2rem;line-height:1.1;color:var(--acc2);font-weight:900}
+.pf-stats span{font-size:.82rem;color:var(--mut)}
+.lb{position:fixed;inset:0;z-index:200;background:rgba(10,12,20,.88);display:grid;place-items:center;padding:16px;cursor:zoom-out}
+.lb[hidden]{display:none}
+.lb img{max-width:100%;max-height:calc(100vh - 80px);width:auto;height:auto;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lb p{color:#fff;font-size:.88rem;margin:10px 0 0;text-align:center}
+.lb button{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:#151b29;font-size:1.3rem;font-weight:800;cursor:pointer}
+.wk-thumb.poster img{object-fit:cover;object-position:top}
+.gallery.combo{grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);align-items:start}
+.gallery.combo .stack{display:grid;gap:18px}
+.gallery.combo img{aspect-ratio:auto;object-fit:contain}
+.gallery.combo > figure img{background:#1b1410}
+@media (max-width:640px){.gallery.combo{grid-template-columns:1fr}}
+@media (max-width:640px){.gallery.poster{grid-template-columns:1fr 1fr;gap:10px}.gallery.poster figcaption{font-size:.78rem;padding:8px 10px}}

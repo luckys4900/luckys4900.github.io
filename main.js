@@ -103,6 +103,30 @@
       secs.forEach(function (s) { so.observe(s); });
     }
   })();
+  // 画像の拡大表示（.gallery の a.zoom）
+  (function () {
+    var links = d.querySelectorAll("a.zoom");
+    if (!links.length) return;
+    var lb = d.createElement("div");
+    lb.className = "lb"; lb.hidden = true;
+    lb.setAttribute("role", "dialog"); lb.setAttribute("aria-modal", "true"); lb.setAttribute("aria-label", "画像の拡大表示");
+    lb.innerHTML = '<button type="button" aria-label="閉じる">×</button><div><img alt=""><p></p></div>';
+    d.body.appendChild(lb);
+    var img = lb.querySelector("img"), cap = lb.querySelector("p"), close = lb.querySelector("button"), last = null;
+    function hide() { lb.hidden = true; img.removeAttribute("src"); if (last) last.focus(); }
+    links.forEach(function (a) {
+      a.addEventListener("click", function (ev) {
+        if (ev.ctrlKey || ev.metaKey || ev.shiftKey) return;
+        ev.preventDefault(); last = a;
+        var t = a.querySelector("img"), fc = a.closest("figure") && a.closest("figure").querySelector("figcaption");
+        img.src = a.getAttribute("href"); img.alt = t ? t.alt : "";
+        cap.textContent = fc ? fc.textContent : "";
+        lb.hidden = false; close.focus();
+      });
+    });
+    lb.addEventListener("click", function (e) { if (e.target !== img) hide(); });
+    d.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lb.hidden) hide(); });
+  })();
   d.addEventListener("click", function (ev) {
     var a = ev.target.closest && ev.target.closest("a.yt[data-yt]");
     if (!a || ev.ctrlKey || ev.metaKey || ev.shiftKey) return;

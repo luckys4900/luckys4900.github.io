@@ -18,7 +18,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = os.path.join(ROOT, "_build", "pages")
 SITE = "https://luckys4900.github.io"
-UPDATED = "2026-11-15"
+UPDATED = "2026-11-25"
 BRAND = "PS Tool Factory"
 
 
