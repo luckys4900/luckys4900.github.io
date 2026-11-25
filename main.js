@@ -34,7 +34,15 @@
     var h = (location.hash || "").replace("#", "");
     if (!h) return;
     var b = d.querySelector('[data-filter-group] button[data-filter="' + h + '"]');
-    if (b) b.click();
+    if (!b) return;
+    b.click();
+    var bar = b.closest("[data-filter-group]");
+    function go() {
+      var rm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+      bar.scrollIntoView({ behavior: rm ? "auto" : "smooth", block: "start" });
+    }
+    if (d.readyState === "complete") requestAnimationFrame(go);
+    else window.addEventListener("load", function () { requestAnimationFrame(go); });
   })();
   // ヘッダーのハンバーガー
   (function () {
