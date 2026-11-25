@@ -940,6 +940,7 @@ th{white-space:nowrap}
   .hero2 .badges{gap:8px}
   .hero2 .badges li{height:54px;padding:0 10px}
   .hero2 .badges b{font-size:12.5px}.hero2 .badges span{font-size:11px}
+}
 /* ===== P1-B ===== */
 .wk-grid .wk.is-fold{display:none}
 .wk-fold{grid-column:1/-1;display:flex;justify-content:center;margin:2px 0 8px}
