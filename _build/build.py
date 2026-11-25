@@ -70,8 +70,26 @@ def url_of(out):
     return "/" + out
 
 
+LAZY_SKIP = {"contact.html", "privacy.html", "site-privacy.html"}
+
+
+def add_lazy(body):
+    """最初の画像（ファーストビュー）以外の <img> に loading=lazy を付ける。"""
+    import re
+    n = [0]
+    def f(m):
+        tag = m.group(0)
+        n[0] += 1
+        if n[0] == 1 or "loading=" in tag or "fetchpriority=" in tag:
+            return tag
+        return tag[:-1].rstrip("/").rstrip() + ' loading="lazy">' if not tag.endswith("/>") else tag[:-2].rstrip() + ' loading="lazy" />'
+    return re.sub(r"<img[^>]*>", f, body)
+
+
 def render(meta, body):
     out = meta["out"]
+    if out not in LAZY_SKIP:
+        body = add_lazy(body)
     title = meta["title"]
     full_title = f"{BRAND} | パチンコ・パチスロの制作工房" if out == "index.html" else f"{title} | {BRAND}（パチンコ・パチスロ）"
     desc = meta.get("desc", "")
@@ -107,9 +125,12 @@ def render(meta, body):
 <meta property="og:site_name" content="{BRAND}">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&amp;family=Jost:wght@400;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css?v={ASSET_V['style.css']}">
 <script src="/main.js?v={ASSET_V['main.js']}" defer></script>
 </head>
@@ -132,16 +153,16 @@ def render(meta, body):
 <div class="wrap">
 <div class="foot-grid">
 <div>
-<h4>{BRAND}</h4>
+<p class="fh">{BRAND}</p>
 <p>パチンコ・パチスロ専門の制作工房です。分析・提案から、アプリ・Web・映像・レポートのデザイン、キャラクター・キャンペーンガールの制作、導線の構築まで、納品・公開後の運用まで一貫して担当します。</p>
 <p><a href="/works/">制作実績を見る</a> ／ <a href="/contact.html">お問い合わせ</a></p>
 </div>
 <div>
-<h4>サイト内</h4>
+<p class="fh">サイト内</p>
 <ul>{nav_li}</ul>
 </div>
 <div>
-<h4>サイト情報</h4>
+<p class="fh">サイト情報</p>
 <ul>{foot_li}</ul>
 </div>
 </div>
