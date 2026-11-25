@@ -1060,3 +1060,6 @@ th{white-space:nowrap}
 .wk-grid{align-items:stretch}
 .wk-grid .wk{height:auto}
 .wk-grid .wk-body>:last-child{margin-top:auto}
+/* 日付があるカードは「日付＋リンク」をひとまとまりで下端にそろえる（日付の位置をカード間でそろえる） */
+.wk-grid .wk-body>.wk-when{margin-top:auto;padding-top:10px}
+.wk-grid .wk-body>.wk-when~*{margin-top:0}
