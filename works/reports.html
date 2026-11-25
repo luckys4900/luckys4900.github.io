@@ -20,9 +20,13 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/notosansjp-400.woff2?v=ca8c1951b8" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/notosansjp-700.woff2?v=e385941b41" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:"Noto Sans JP";font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/notosansjp-400.woff2?v=ca8c1951b8) format("woff2")}@font-face{font-family:"Noto Sans JP";font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/notosansjp-700.woff2?v=e385941b41) format("woff2")}@font-face{font-family:"Noto Sans JP";font-style:normal;font-weight:900;font-display:swap;src:url(/fonts/notosansjp-900.woff2?v=28ccd66599) format("woff2")}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&amp;family=Jost:wght@400;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&amp;display=swap"></noscript>
 <link rel="stylesheet" href="/style.css?v=7a7f503178">
 <script src="/main.js?v=9f415f6ed3" defer></script>
 </head>
@@ -45,7 +49,7 @@
 <span class="eyebrow">Report / Design</span>
 <h1>レポート・資料デザイン</h1>
 <p class="lead">集計した数字を、読む人が毎月同じ見方で比べられる形に整えます。ここに載せているのは、パチンコ店向けの月次レポートを想定して<b>架空のデータで作ったデザイン見本</b>です。</p>
-<div class="hk-say hk-say-top"><span class="hk-ic f-studio"><img src="/img/hikari/master/face_front_studio.png" alt="" width="389" height="428" loading="lazy"></span><p class="hk-bub">ここは資料デザインの見本だよ。数値はすべて架空だから、気をつけてね。</p></div>
+<div class="hk-say hk-say-top"><span class="hk-ic f-studio"><img src="/img/hikari/master/face_front_studio.png" srcset="/img/r/hikari/master/face_front_studio-240w.webp 240w, /img/hikari/master/face_front_studio.png 389w" sizes="(max-width:480px) 70px, 90px" alt="" width="389" height="428" loading="lazy"></span><p class="hk-bub">ここは資料デザインの見本だよ。数値はすべて架空だから、気をつけてね。</p></div>
 <p class="note warn">見本の店舗名・数値・グラフ・所見はすべて架空です。実在の店舗や実際の数値とは関係ありません。顧客の案件の資料を載せる場合は、店舗や会社を特定できる情報を伏せます。</p>
 
 <div class="table-wrap"><table>
@@ -56,10 +60,10 @@
 
 <h2>月次 稼働レポート（見本）</h2>
 <div class="gallery">
-<figure><img src="/img/works/report-cover.webp" alt="月次稼働レポートの表紙の見本" width="1200" height="675" loading="lazy"><figcaption>表紙: 宛名と対象月は伏せ字</figcaption></figure>
-<figure><img src="/img/works/report-trend.webp" alt="稼働の推移のページの見本。指標の枠と折れ線グラフ" width="1200" height="675" loading="lazy"><figcaption>稼働の推移: 指標は 00.0% の伏せ字、グラフの目盛りの実数は省略</figcaption></figure>
-<figure><img src="/img/works/report-category.webp" alt="カテゴリ別の構成と所見のページの見本" width="1200" height="675" loading="lazy"><figcaption>カテゴリ別の構成と所見: 機種名はカテゴリに置き換え</figcaption></figure>
-<figure id="flow"><img src="/img/works/report-flow.webp" alt="レポート制作の進め方のスライドの見本" width="1200" height="675" loading="lazy"><figcaption>提案スライド: レポート制作の進め方</figcaption></figure>
+<figure><img src="/img/works/report-cover.webp" srcset="/img/r/works/report-cover-480w.webp 480w, /img/r/works/report-cover-960w.webp 960w, /img/works/report-cover.webp 1200w" sizes="(max-width:480px) 440px, 350px" alt="月次稼働レポートの表紙の見本" width="1200" height="675" loading="lazy"><figcaption>表紙: 宛名と対象月は伏せ字</figcaption></figure>
+<figure><img src="/img/works/report-trend.webp" srcset="/img/r/works/report-trend-480w.webp 480w, /img/r/works/report-trend-960w.webp 960w, /img/works/report-trend.webp 1200w" sizes="(max-width:480px) 440px, 350px" alt="稼働の推移のページの見本。指標の枠と折れ線グラフ" width="1200" height="675" loading="lazy"><figcaption>稼働の推移: 指標は 00.0% の伏せ字、グラフの目盛りの実数は省略</figcaption></figure>
+<figure><img src="/img/works/report-category.webp" srcset="/img/r/works/report-category-480w.webp 480w, /img/r/works/report-category-960w.webp 960w, /img/works/report-category.webp 1200w" sizes="(max-width:480px) 440px, 350px" alt="カテゴリ別の構成と所見のページの見本" width="1200" height="675" loading="lazy"><figcaption>カテゴリ別の構成と所見: 機種名はカテゴリに置き換え</figcaption></figure>
+<figure id="flow"><img src="/img/works/report-flow.webp" srcset="/img/r/works/report-flow-480w.webp 480w, /img/r/works/report-flow-960w.webp 960w, /img/works/report-flow.webp 1200w" sizes="(max-width:480px) 440px, 350px" alt="レポート制作の進め方のスライドの見本" width="1200" height="675" loading="lazy"><figcaption>提案スライド: レポート制作の進め方</figcaption></figure>
 </div>
 
 <h2>デザインで気をつけていること</h2>

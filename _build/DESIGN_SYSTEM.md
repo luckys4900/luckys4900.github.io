@@ -221,3 +221,19 @@ CSS の値を正とし、見た目は変えずにコメントと文書を実際�
 3. 合格した案だけをトークン（この文書の値）に反映する。トークンは `style.css` の 1 か所に書き、個別の絶対座標や個別の影を作らない。
 4. 変更の検査: `scripts/visual-check.cjs`（5 幅）・`scripts/axe-check.cjs`・html-validate・linkinator を実行する。
 5. この文書の表を更新し、変更の理由と監査の点数を `C:\dev\design-references\approved\` に記録する。
+
+## 12. 表示速度（フォントと画像の配信）— 2026-11-25 追記
+
+見た目（トークン・組版・画像の内容）は変えず、読み込み方だけを決めている。
+
+**フォント**（`_build/fonts.py`、`build.py` の最後で自動実行）
+- Noto Sans JP は自前配信（`fonts/notosansjp-{400,700,900}.woff2`）。元は可変フォント（SIL OFL 1.1）を、サイトで使う文字 + 基本の記号・英数・かな全部でサブセット化し、静的インスタンス 400 / 700 / 900 にしたもの。font-weight 300・500・600・800 は、Google Fonts を使っていた頃と同じくブラウザが最も近い 3 つのどれかに寄せる（見た目は変わらない）。
+- `@font-face`（`font-display: swap`）は各ページの head のインライン `<style>`。400 と 700 は `<link rel="preload">`。URL の `?v=` はファイルの中身のハッシュ。
+- 文字集合・方式が変わらなければファイルを書き換えない（`_build/fonts.lock.json`）。文章に新しい字を足したら `python -I _build/build.py` で自動的に作り直される。
+- Jost（英字の飾り）だけ Google Fonts を、描画を止めない形（`media="print" onload`）で読む。
+
+**画像**（`_build/images.py`、`_build/sizes.json`）
+- 縮小版は `img/r/<img/ からの相対パス（拡張子なし）>-<幅>w.webp`（幅は 480・960・1440 のうち元より小さいもの）。元画像が変わったときだけ作り直す（`_build/images.lock.json`）。
+- `build.py` が、`/img/` の webp と `img/hikari/master/*.png` を指す `<img>`・`<source>` に `srcset`（w 記述子、最後が元画像）と `sizes` を付ける。`sizes` は親要素のクラス 2 つをキーに `_build/sizes.json` から引く。レイアウトを変えたら、サイトを配信して `node _build/measure_sizes.cjs <URL> <playwright フォルダ>` で作り直す。
+- FV の代表画像（`fetchpriority="high"`）は `loading` を付けず、head に `srcset` 付きの `<link rel="preload" as="image">` を出す。それ以外はファーストビューの最初の 1 枚を除き `loading="lazy"`。
+- 画像を追加・差し替えたら `python -I _build/build.py` を実行する（縮小版と `srcset` が更新される）。

@@ -20,9 +20,13 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/notosansjp-400.woff2?v=ca8c1951b8" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/notosansjp-700.woff2?v=e385941b41" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:"Noto Sans JP";font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/notosansjp-400.woff2?v=ca8c1951b8) format("woff2")}@font-face{font-family:"Noto Sans JP";font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/notosansjp-700.woff2?v=e385941b41) format("woff2")}@font-face{font-family:"Noto Sans JP";font-style:normal;font-weight:900;font-display:swap;src:url(/fonts/notosansjp-900.woff2?v=28ccd66599) format("woff2")}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&amp;family=Jost:wght@400;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&amp;display=swap"></noscript>
 <link rel="stylesheet" href="/style.css?v=7a7f503178">
 <script src="/main.js?v=9f415f6ed3" defer></script>
 </head>
@@ -57,8 +61,8 @@
 <figure><img src="/img/app-latest/koyaku-pro.webp" alt="Pro 機能の案内画面" width="360" height="800" loading="lazy"><figcaption>Pro 機能の案内</figcaption></figure>
 </div>
 <div class="shots wide" style="margin-top:12px">
-<figure><img src="/img/app-latest/koyaku-landscape.webp" alt="横向きのカウンター画面" width="720" height="324" loading="lazy"><figcaption>横向き（タブレットにも対応）</figcaption></figure>
-<figure><img src="/img/app-latest/koyaku-calculator.webp" alt="電卓を開いた画面" width="720" height="324" loading="lazy"><figcaption>電卓と突入率の計算</figcaption></figure>
+<figure><img src="/img/app-latest/koyaku-landscape.webp" srcset="/img/r/app-latest/koyaku-landscape-480w.webp 480w, /img/app-latest/koyaku-landscape.webp 720w" sizes="(max-width:480px) 380px, 360px" alt="横向きのカウンター画面" width="720" height="324" loading="lazy"><figcaption>横向き（タブレットにも対応）</figcaption></figure>
+<figure><img src="/img/app-latest/koyaku-calculator.webp" srcset="/img/r/app-latest/koyaku-calculator-480w.webp 480w, /img/app-latest/koyaku-calculator.webp 720w" sizes="(max-width:480px) 380px, 360px" alt="電卓を開いた画面" width="720" height="324" loading="lazy"><figcaption>電卓と突入率の計算</figcaption></figure>
 </div>
 <p class="meta">画面の数値は説明用のサンプルです。</p>
 

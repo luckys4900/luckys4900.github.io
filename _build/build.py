@@ -13,7 +13,12 @@ _build/ は先頭が _ のため、GitHub Pages（Jekyll）では公開されな
 import html
 import io
 import os
+import re
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import fonts  # noqa: E402  Noto Sans JP のサブセット（woff2）を作る
+import images  # noqa: E402  縮小版画像と srcset・sizes
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = os.path.join(ROOT, "_build", "pages")
@@ -31,6 +36,29 @@ def _asset_version(name):
 
 ASSET_V = {n: _asset_version(n) for n in ("style.css", "main.js")}
 YT_URL = "https://www.youtube.com/@pachinko_iinkai"
+FONT_V = fonts.font_versions()  # fonts/*.woff2 の版番号（ファイルの中身のハッシュ）。fonts.run() の後に更新される
+JOST_URL = "https://fonts.googleapis.com/css2?family=Jost:wght@400;600&amp;display=swap"
+PRELOAD_WEIGHTS = (400, 700)
+
+
+def font_url(w):
+    v = FONT_V.get(w)
+    return f"/fonts/notosansjp-{w}.woff2" + (f"?v={v}" if v else "")
+
+
+def font_head():
+    """自前の Noto Sans JP（サブセット）。font-display: swap。Jost だけ Google Fonts から、描画を止めずに読む。"""
+    ff = "".join(
+        f'@font-face{{font-family:"Noto Sans JP";font-style:normal;font-weight:{w};font-display:swap;'
+        f'src:url({font_url(w)}) format("woff2")}}' for w in fonts.WEIGHTS)
+    pre = "".join(f'<link rel="preload" href="{font_url(w)}" as="font" type="font/woff2" crossorigin>\n'
+                  for w in PRELOAD_WEIGHTS if w in FONT_V)
+    return (pre + f"<style>{ff}</style>\n"
+            '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
+            '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
+            f'<link rel="stylesheet" href="{JOST_URL}" media="print" onload="this.media=\'all\'">\n'
+            f'<noscript><link rel="stylesheet" href="{JOST_URL}"></noscript>\n')
+
 
 NAV = [
     ("/", "トップ"),
@@ -87,6 +115,30 @@ def add_lazy(body):
 
 
 def render(meta, body):
+    page = _render(meta, body)
+    if meta["out"] not in LAZY_SKIP:
+        page = images.apply(page)
+        page = page.replace("<!--LCP-->", lcp_preload(page))
+    return page.replace("<!--LCP-->", "")
+
+
+def lcp_preload(page):
+    """ファーストビューの代表画像（fetchpriority=high の img）を、srcset 付きで先読みする。"""
+    m = re.search(r'<img\b[^>]*fetchpriority="high"[^>]*>', page)
+    if not m:
+        return ""
+    tag = m.group(0)
+
+    def g(a):
+        r = re.search(r'\b' + a + r'="([^"]*)"', tag)
+        return r.group(1) if r else None
+    if not g("srcset"):
+        return f'<link rel="preload" as="image" href="{g("src")}" fetchpriority="high">\n'
+    return (f'<link rel="preload" as="image" href="{g("src")}" imagesrcset="{g("srcset")}" '
+            f'imagesizes="{g("sizes")}" fetchpriority="high">\n')
+
+
+def _render(meta, body):
     out = meta["out"]
     if out not in LAZY_SKIP:
         body = add_lazy(body)
@@ -108,6 +160,7 @@ def render(meta, body):
         main_html = '<main id="main" class="wide">\n' + body + '</main>'
     else:
         main_html = '<main id="main" class="page"><div class="prose">\n' + body + '</div></main>'
+    lcp_link = "<!--LCP-->"
     return f"""<!doctype html>
 <html lang="ja">
 <head>
@@ -128,10 +181,7 @@ def render(meta, body):
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&amp;family=Jost:wght@400;600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v={ASSET_V['style.css']}">
+{font_head()}{lcp_link}<link rel="stylesheet" href="/style.css?v={ASSET_V['style.css']}">
 <script src="/main.js?v={ASSET_V['main.js']}" defer></script>
 </head>
 <body>
@@ -187,7 +237,7 @@ def render(meta, body):
 </html>
 """
 
-def main():
+def write_pages():
     outs = []
     for name in sorted(os.listdir(PAGES)):
         if not name.endswith(".html"):
@@ -195,8 +245,23 @@ def main():
         meta, body = parse(os.path.join(PAGES, name))
         dst = os.path.join(ROOT, *meta["out"].split("/"))
         os.makedirs(os.path.dirname(dst), exist_ok=True)
-        io.open(dst, "w", encoding="utf-8", newline="\n").write(render(meta, body))
+        text = render(meta, body)
+        # 中身が同じなら書き換えない
+        if not os.path.exists(dst) or io.open(dst, encoding="utf-8", newline="").read() != text:
+            io.open(dst, "w", encoding="utf-8", newline="\n").write(text)
         outs.append(meta["out"])
+    return outs
+
+
+def main():
+    outs = write_pages()
+    # フォントのサブセット（文字集合が変わったときだけ作り直す）。版番号が変わったら HTML を書き直す。
+    _, v = fonts.run()
+    if v != FONT_V:
+        FONT_V.clear()
+        FONT_V.update(v)
+        write_pages()
+    images.save_lock()
     # 公開用の全 HTML（_build で作らないページも含む）が、版番号付きの CSS・JS を読んでいるか確かめる。
     # 版番号がないと、以前に来た人のブラウザに古い CSS が残り、新しい HTML だけが崩れて表示される。
     bad = []
