@@ -909,3 +909,35 @@ th{white-space:nowrap}
 
 /* ハッシュ絞り込み後のスクロール: 固定ヘッダー分 */
 [data-filter-group]{scroll-margin-top:110px}
+
+/* ===== P1-A ===== */
+/* トップのファーストビュー: 対象の明示・キャッチ・相談導線 */
+.hero-text .pre{font-style:normal;font-weight:700;font-size:14px;letter-spacing:.06em;color:#4a3fa0;flex-wrap:wrap;gap:10px}
+.hero-text .pre span{max-width:80px;min-width:24px}
+.hero2 h1{margin-bottom:14px}
+.hero2 .catch{margin:0 0 12px;font-size:clamp(20px,2.1vw,26px);font-weight:700;line-height:1.5;letter-spacing:.06em;color:var(--ink);word-break:auto-phrase;text-wrap:balance}
+.hero2 .lead:last-of-type{margin-bottom:18px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 20px}
+.hero-cta a{padding:13px 20px 13px 28px;font-size:14px}
+.hero2 .badges li{height:62px;min-width:0;flex:0 1 auto;padding:0 16px}
+.app-kind{margin:10px 0 0;font-size:13px;font-weight:700;letter-spacing:.08em;color:#4a3fa0}
+.prose .cta-btns,.cta-btns{display:flex;flex-wrap:wrap;gap:14px;margin:34px 0 0}
+.prose .cta-btns .btn-w,.cta-btns .btn-w{border:1px solid var(--line2,#d9d2f0)}
+@media(max-width:900px){
+  .hero-hk{display:contents}
+  .hero-hk .hk-stage{grid-column:2;grid-row:2;align-self:end}
+  .hero-hk .hk-bub.down{grid-column:1/-1;grid-row:3;width:auto;max-width:none;margin:2px 80px 12px 0;text-align:left}
+  .hero-hk .hk-bub.down::before{display:none}
+}
+@media(max-width:560px){
+  .hero-text{padding:22px 16px}
+  .hero-text .pre{font-size:12.5px;margin-bottom:8px}
+  .hero2 .catch{font-size:19px;margin-bottom:8px}
+  .hero2 .lead{font-size:13.5px;line-height:1.8}
+  .hero2 .lead:last-of-type{margin-bottom:14px}
+  .hero-cta{gap:8px;margin-bottom:14px}
+  .hero-cta a{flex:1 1 150px;padding:12px 12px 12px 18px;font-size:13px;gap:8px;letter-spacing:.04em}
+  .hero2 .badges{gap:8px}
+  .hero2 .badges li{height:54px;padding:0 10px}
+  .hero2 .badges b{font-size:12.5px}.hero2 .badges span{font-size:11px}
+}
