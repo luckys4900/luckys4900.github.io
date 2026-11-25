@@ -24,6 +24,13 @@ SIZES = os.path.join(ROOT, "_build", "sizes.json")
 WIDTHS = (480, 960, 1440)
 SMALL_PNG_WIDTHS = (240,)
 QUALITY = 80
+# LCP 画像など、表示幅に合わせて候補を足す画像（img/ からの相対パス -> 追加の幅）
+EXTRA_WIDTHS = {"works/cm1-final.webp": (640,), "works/creative-icon.webp": (320,)}
+# 実測の sizes（4 つの幅の最大値）より正確な指定が必要なキー（FV の代表画像: 幅は viewport - 40px 前後）
+SIZES_OVERRIDE = {
+    "span.m2-ph < a.m2-t.m2-hero":
+        "(max-width:480px) calc(100vw - 40px), (max-width:900px) calc(100vw - 80px), (max-width:1200px) 550px, 610px",
+}
 IGNORE_CLASSES = {"reveal", "in", "js", "is-fold", "fade-l", "fade-r"}
 VOID = {"img", "source", "br", "hr", "meta", "link", "input", "wbr", "area", "base", "col", "embed", "param", "track"}
 
@@ -71,7 +78,7 @@ def variants(src):
     stem = os.path.splitext(rel)[0]
     with Image.open(path) as im:
         ow, oh = im.size
-        widths = [w for w in (SMALL_PNG_WIDTHS if rel.endswith(".png") else ()) if w < ow] + [w for w in WIDTHS if w < ow]
+        widths = [w for w in (SMALL_PNG_WIDTHS if rel.endswith(".png") else ()) if w < ow] + [w for w in sorted(set(WIDTHS) | set(EXTRA_WIDTHS.get(rel, ()))) if w < ow]
         if not widths:
             return []
         res = []
@@ -150,7 +157,7 @@ def _sizes_for(key):
     global _sizes
     if _sizes is None:
         _sizes = _load(SIZES)
-    return _sizes.get(key)
+    return SIZES_OVERRIDE.get(key) or _sizes.get(key)
 
 
 def _srcset(vs):

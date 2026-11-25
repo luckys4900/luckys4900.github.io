@@ -38,7 +38,7 @@ ASSET_V = {n: _asset_version(n) for n in ("style.css", "main.js")}
 YT_URL = "https://www.youtube.com/@pachinko_iinkai"
 FONT_V = fonts.font_versions()  # fonts/*.woff2 の版番号（ファイルの中身のハッシュ）。fonts.run() の後に更新される
 JOST_URL = "https://fonts.googleapis.com/css2?family=Jost:wght@400;600&amp;display=swap"
-PRELOAD_WEIGHTS = (400, 700)
+PRELOAD_WEIGHTS = ()  # フォントの preload は LCP 画像と帯域を取り合うため外した（swap で必要になった時に読む）
 
 
 def font_url(w):
