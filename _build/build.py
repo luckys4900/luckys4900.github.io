@@ -42,7 +42,8 @@ NAV = [
 ]
 FOOT = [
     ("/about.html", "運営者情報"),
-    ("/privacy.html", "プライバシーポリシー"),
+    ("/site-privacy.html", "プライバシーポリシー（サイト）"),
+    ("/privacy.html", "プライバシーポリシー（アプリ）"),
     ("/terms.html", "利用規約"),
     ("/contact.html", "お問い合わせ"),
     ("/disclosure.html", "広告・PR の開示"),
