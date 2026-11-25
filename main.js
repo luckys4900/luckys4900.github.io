@@ -18,16 +18,62 @@
     var grid = d.getElementById(bar.getAttribute("data-filter-group"));
     if (!grid) return;
     bar.hidden = false;
+    // P1-B: 「すべて」では各カテゴリの先頭 3 件だけ見せ、残りは「もっと見る」で展開する（HTML には全件ある）
+    var SHOW = 3, groups = [], cur = null;
+    Array.prototype.forEach.call(grid.children, function (el) {
+      if (el.classList.contains("wk-say")) { cur = { cat: el.getAttribute("data-cat"), items: [], open: false }; groups.push(cur); }
+      else if (cur && el.classList.contains("wk")) cur.items.push(el);
+    });
+    groups = groups.filter(function (g) { return g.items.length > SHOW; });
+    groups.forEach(function (g) {
+      var rest = g.items.slice(SHOW), ids = [];
+      rest.forEach(function (el, i) { if (!el.id) el.id = "wk-" + g.cat + "-" + (SHOW + i + 1); ids.push(el.id); });
+      g.rest = rest;
+      g.wrap = d.createElement("div"); g.wrap.className = "wk-fold";
+      g.btn = d.createElement("button"); g.btn.type = "button"; g.btn.className = "wk-fold-btn";
+      g.btn.setAttribute("aria-controls", ids.join(" "));
+      g.btn.addEventListener("click", function () { g.open = !g.open; fold(); });
+      g.wrap.appendChild(g.btn);
+      g.items[g.items.length - 1].insertAdjacentElement("afterend", g.wrap);
+    });
+    var current = "all";
+    function fold() {
+      groups.forEach(function (g) {
+        g.rest.forEach(function (el) {
+          var f = current === "all" && !g.open;
+          el.classList.toggle("is-fold", f);
+          if (!f && !el.hidden) el.classList.add("in");
+        });
+        g.wrap.hidden = current !== "all";
+        g.btn.setAttribute("aria-expanded", g.open ? "true" : "false");
+        g.btn.textContent = g.open ? "代表の 3 件だけにする" : "もっと見る（あと " + g.rest.length + " 件）";
+      });
+    }
+    fold();
     bar.addEventListener("click", function (ev) {
       var b = ev.target.closest("button[data-filter]");
       if (!b) return;
       var f = b.getAttribute("data-filter");
+      current = f;
       bar.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
       grid.querySelectorAll(".work,.wk,.wk-say,.wk-band").forEach(function (w) {
         w.hidden = !(f === "all" || (w.getAttribute("data-cat") || "").split(" ").indexOf(f) >= 0);
         if (!w.hidden) w.classList.add("in");
       });
+      fold();
+      // 横スクロールの絞り込みバーで、選んだボタンが見える位置にする
+      var l = b.offsetLeft - (bar.clientWidth - b.offsetWidth) / 2;
+      if (bar.scrollWidth > bar.clientWidth) bar.scrollLeft = Math.max(0, l);
     });
+    // 横スクロールのはみ出しを示すフェードの端判定
+    function edges() {
+      var max = bar.scrollWidth - bar.clientWidth;
+      bar.classList.toggle("fade-l", bar.scrollLeft > 4);
+      bar.classList.toggle("fade-r", max > 4 && bar.scrollLeft < max - 4);
+    }
+    bar.addEventListener("scroll", edges, { passive: true });
+    window.addEventListener("resize", edges);
+    edges();
   });
   // /works/#web などのハッシュで、その種類に絞り込む
   (function () {
