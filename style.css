@@ -1099,3 +1099,17 @@ th{white-space:nowrap}
 .chara-btns .btn-w{border:1px solid var(--line2,#d9d2f0)}
 @media(max-width:900px){.x-posts{grid-template-columns:1fr}}
 @media(max-width:640px){.x-strip{flex-direction:column;align-items:flex-start;padding:16px}.x-strip-links{flex-wrap:wrap;gap:8px 20px}.x-acct .btn-w{width:100%}.chara-btns .btn-long,.chara-btns .btn-w{width:100%;white-space:normal}}
+
+/* X 投稿: 画像のある固定ポストを左に大きく、文章だけの投稿を右に縦積み（空き枠を作らない） */
+.x-posts{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:start}
+.x-post--main{grid-row:span 2}
+.x-post--main .x-media{margin:-16px -16px 14px}
+.x-post--main .x-media img{border-radius:10px 10px 0 0}
+.x-post--main .x-media figcaption{padding:0 16px}
+.x-post blockquote{word-break:auto-phrase}
+.x-post .x-link{margin-top:6px!important}
+.chara-btns{margin-top:28px}
+@media(max-width:900px){.x-posts{grid-template-columns:1fr}.x-post--main{grid-row:auto}}
+@media(max-width:640px){.chara-btns .btn-long{padding:13px 52px 13px 20px}}
+@media(max-width:640px){.x-strip{flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px 14px}.x-strip-tx{flex:1 1 0}.x-strip-links{width:100%}}
+.chara-btns .btn-long{word-break:auto-phrase}
