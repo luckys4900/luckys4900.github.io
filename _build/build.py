@@ -40,6 +40,7 @@ YT_URL = "https://www.youtube.com/@pachinko_iinkai"
 # 解析を説明するプライバシーポリシーの節（<!--GC-->…<!--/GC-->）も出さない。
 # 空のときだけ使う旧文言は <!--NOGC-->…<!--/NOGC--> で囲む（コードを入れると逆に消える）。
 GC_CODE = ""
+GC_SINCE = ""   # 有効化した日（例 2026-12-01）。site-privacy の改定日に入る
 FONT_V = fonts.font_versions()  # fonts/*.woff2 の版番号（ファイルの中身のハッシュ）。fonts.run() の後に更新される
 JOST_URL = "https://fonts.googleapis.com/css2?family=Jost:wght@400;600&amp;display=swap"
 PRELOAD_WEIGHTS = ()  # フォントの preload は LCP 画像と帯域を取り合うため外した（swap で必要になった時に読む）
@@ -128,6 +129,9 @@ def gc_script():
 def gc_blocks(body):
     """GC_CODE の有無で、本文中の <!--GC-->…<!--/GC--> と <!--NOGC-->…<!--/NOGC--> の片方を取り除く。"""
     drop, keep = ("NOGC", "GC") if GC_CODE else ("GC", "NOGC")
+    if GC_CODE and not GC_SINCE:
+        raise SystemExit("GC_CODE を入れたら GC_SINCE（有効化した日）も入れること（site-privacy の改定日に入る）")
+    body = body.replace("GC_SINCE", GC_SINCE)
     body = re.sub(rf"<!--{drop}-->.*?<!--/{drop}-->\n?", "", body, flags=re.S)
     return re.sub(rf"<!--/?{keep}-->\n?", "", body)
 
