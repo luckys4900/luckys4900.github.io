@@ -1113,3 +1113,5 @@ th{white-space:nowrap}
 @media(max-width:640px){.chara-btns .btn-long{padding:13px 52px 13px 20px}}
 @media(max-width:640px){.x-strip{flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px 14px}.x-strip-tx{flex:1 1 0}.x-strip-links{width:100%}}
 .chara-btns .btn-long{word-break:auto-phrase}
+/* スマホで長い文言のボタンが画面外へ出ないように */
+@media(max-width:640px){.cta-btns .btn-y,.cta-btns .btn-w{white-space:normal;max-width:100%;width:100%;word-break:auto-phrase;text-align:center}}
