@@ -36,6 +36,10 @@ def _asset_version(name):
 
 ASSET_V = {n: _asset_version(n) for n in ("style.css", "main.js")}
 YT_URL = "https://www.youtube.com/@pachinko_iinkai"
+# GoatCounter のサイトコード（https://<コード>.goatcounter.com）。空のあいだは計測のスクリプトも、
+# 解析を説明するプライバシーポリシーの節（<!--GC-->…<!--/GC-->）も出さない。
+# 空のときだけ使う旧文言は <!--NOGC-->…<!--/NOGC--> で囲む（コードを入れると逆に消える）。
+GC_CODE = ""
 FONT_V = fonts.font_versions()  # fonts/*.woff2 の版番号（ファイルの中身のハッシュ）。fonts.run() の後に更新される
 JOST_URL = "https://fonts.googleapis.com/css2?family=Jost:wght@400;600&amp;display=swap"
 PRELOAD_WEIGHTS = ()  # フォントの preload は LCP 画像と帯域を取り合うため外した（swap で必要になった時に読む）
@@ -114,8 +118,22 @@ def add_lazy(body):
     return re.sub(r"<img[^>]*>", f, body)
 
 
+def gc_script():
+    if not GC_CODE:
+        return ""
+    return (f'<script data-goatcounter="https://{GC_CODE}.goatcounter.com/count" async '
+            'src="//gc.zgo.at/count.js"></script>\n')
+
+
+def gc_blocks(body):
+    """GC_CODE の有無で、本文中の <!--GC-->…<!--/GC--> と <!--NOGC-->…<!--/NOGC--> の片方を取り除く。"""
+    drop, keep = ("NOGC", "GC") if GC_CODE else ("GC", "NOGC")
+    body = re.sub(rf"<!--{drop}-->.*?<!--/{drop}-->\n?", "", body, flags=re.S)
+    return re.sub(rf"<!--/?{keep}-->\n?", "", body)
+
+
 def render(meta, body):
-    page = _render(meta, body)
+    page = _render(meta, gc_blocks(body))
     if meta["out"] not in LAZY_SKIP:
         page = images.apply(page)
         page = page.replace("<!--LCP-->", lcp_preload(page))
@@ -183,19 +201,19 @@ def _render(meta, body):
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 {font_head()}{lcp_link}<link rel="stylesheet" href="/style.css?v={ASSET_V['style.css']}">
 <script src="/main.js?v={ASSET_V['main.js']}" defer></script>
-</head>
+{gc_script()}</head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
 <header class="site-header">
 <div class="hd-bar">
 <a class="logo" href="/"><small>PACHINKO / SLOT CREATIVE</small><b>{BRAND}</b></a>
 <nav class="hd-nav" aria-label="サイト内">{nav_inline}</nav>
-<div class="hd-cta"><a class="btn-out sm" href="{YT_URL}" rel="noopener">YouTube を見る</a><a class="btn-y sm" href="/contact.html">制作の相談をする</a></div>
+<div class="hd-cta"><a class="btn-out sm" href="{YT_URL}" rel="noopener" data-goatcounter-click="yt-header">YouTube を見る</a><a class="btn-y sm" href="/contact.html">制作の相談をする</a></div>
 <button type="button" class="hd-burger" id="hdBurger" aria-expanded="false" aria-controls="hdMenu" aria-label="メニューを開く"><i></i><i></i></button>
 </div>
 <div class="hd-menu" id="hdMenu" hidden>
 <ul>{menu_li}</ul>
-<p class="hd-menu-btns"><a class="btn-out" href="{YT_URL}" rel="noopener">YouTube を見る</a><a class="btn-y" href="/contact.html">制作の相談をする</a></p>
+<p class="hd-menu-btns"><a class="btn-out" href="{YT_URL}" rel="noopener" data-goatcounter-click="yt-menu">YouTube を見る</a><a class="btn-y" href="/contact.html">制作の相談をする</a></p>
 </div>
 </header>
 {main_html}
