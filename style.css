@@ -1063,3 +1063,39 @@ th{white-space:nowrap}
 /* 日付があるカードは「日付＋リンク」をひとまとまりで下端にそろえる（日付の位置をカード間でそろえる） */
 .wk-grid .wk-body>.wk-when{margin-top:auto;padding-top:10px}
 .wk-grid .wk-body>.wk-when~*{margin-top:0}
+
+/* ===== X（SNS 運用）の紹介 ===== */
+.x-acct{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#fff;border:1px solid rgba(43,43,73,.14);border-radius:10px;box-shadow:0 1px 3px rgba(43,43,73,.06);padding:16px 20px;margin:20px 0}
+.x-acct .hk-ic{width:72px;height:72px}
+.x-acct-tx{display:flex;flex-direction:column;gap:2px;flex:1 1 220px;min-width:0}
+.x-acct-tx b{font-size:17px;color:var(--ink)}
+.x-id{font-family:"Jost",sans-serif;font-weight:600;color:#5b49b0;letter-spacing:.06em}
+.x-sub{font-size:13px;color:var(--m2-mut,#4d5568)}
+.x-posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:24px 0;align-items:stretch}
+.x-post{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(43,43,73,.14);border-radius:10px;box-shadow:0 1px 3px rgba(43,43,73,.06);padding:16px;min-width:0;transition:box-shadow .2s ease-out}
+.x-post:hover{box-shadow:0 4px 12px rgba(43,43,73,.1)}
+.x-post p{margin:0}
+.x-meta{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--m2-mut,#4d5568);letter-spacing:.04em}
+.x-meta span{font-weight:700}
+.x-tag{margin:8px 0 0!important;font-size:12px;font-weight:700;color:#5b49b0}
+.x-post blockquote{margin:10px 0 14px;padding:0;border:0;font-size:14.5px;line-height:1.8;color:var(--ink)}
+.x-media{margin:0 0 12px}
+.x-media img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:6px;background:#eceaf4}
+.x-media figcaption{font-size:12px;color:var(--m2-mut,#4d5568);margin-top:6px}
+.x-noimg{flex:1 1 auto;display:flex;align-items:center;font-size:12px;color:var(--m2-mut,#4d5568);background:#eceaf4;border-radius:6px;padding:8px 12px;margin:0 0 12px!important}
+.x-link{margin-top:auto!important;padding-top:4px;font-size:14px;font-weight:700}
+.x-link a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.x-link a:hover{color:var(--pur-d)}
+.x-strip{display:flex;align-items:center;gap:16px;max-width:1040px;margin:24px auto;background:#fff;border:1px solid rgba(43,43,73,.14);border-radius:10px;box-shadow:0 1px 3px rgba(43,43,73,.06);padding:14px 20px}
+.x-strip .hk-ic{width:56px;height:56px}
+.x-strip-tx{flex:1 1 auto;min-width:0;margin:0;display:flex;flex-direction:column;gap:2px}
+.x-strip-tx b{font-size:16px;color:var(--ink)}
+.x-strip-tx span{font-size:13px;color:var(--m2-mut,#4d5568)}
+.x-strip-links{display:flex;gap:20px;margin:0;flex:none}
+.x-strip-links a{font-size:14px;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.x-strip-links a:hover{color:var(--pur-d)}
+.chara-btns{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center}
+.chara-btns .btn-long{margin:0}
+.chara-btns .btn-w{border:1px solid var(--line2,#d9d2f0)}
+@media(max-width:900px){.x-posts{grid-template-columns:1fr}}
+@media(max-width:640px){.x-strip{flex-direction:column;align-items:flex-start;padding:16px}.x-strip-links{flex-wrap:wrap;gap:8px 20px}.x-acct .btn-w{width:100%}.chara-btns .btn-long,.chara-btns .btn-w{width:100%;white-space:normal}}
