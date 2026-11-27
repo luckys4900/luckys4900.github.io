@@ -39,8 +39,8 @@ YT_URL = "https://www.youtube.com/@pachinko_iinkai"
 # GoatCounter のサイトコード（https://<コード>.goatcounter.com）。空のあいだは計測のスクリプトも、
 # 解析を説明するプライバシーポリシーの節（<!--GC-->…<!--/GC-->）も出さない。
 # 空のときだけ使う旧文言は <!--NOGC-->…<!--/NOGC--> で囲む（コードを入れると逆に消える）。
-GC_CODE = ""
-GC_SINCE = ""   # 有効化した日（例 2026-12-01）。site-privacy の改定日に入る
+GC_CODE = "luckys4900"
+GC_SINCE = "2026-11-27"   # 有効化した日（例 2026-12-01）。site-privacy の改定日に入る
 FONT_V = fonts.font_versions()  # fonts/*.woff2 の版番号（ファイルの中身のハッシュ）。fonts.run() の後に更新される
 JOST_URL = "https://fonts.googleapis.com/css2?family=Jost:wght@400;600&amp;display=swap"
 PRELOAD_WEIGHTS = ()  # フォントの preload は LCP 画像と帯域を取り合うため外した（swap で必要になった時に読む）
@@ -205,7 +205,7 @@ def _render(meta, body):
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 {font_head()}{lcp_link}<link rel="stylesheet" href="/style.css?v={ASSET_V['style.css']}">
 <script src="/main.js?v={ASSET_V['main.js']}" defer></script>
-{gc_script()}</head>
+{gc_script() if url != "/privacy.html" else ""}</head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
 <header class="site-header">
